@@ -1,25 +1,24 @@
 import { resolve } from "node:path";
 import { defineCliConfig } from "sanity/cli";
-import config from "sanity.config";
 
 export default defineCliConfig({
   api: {
-    projectId: config.projectId,
-    dataset: config.dataset,
-  },
-  project: {
-    basePath: config.basePath,
+    projectId: "eqid19xi",
+    dataset: "production",
   },
   typegen: {
     path: "./src/sanity/**/*.{ts,tsx,js,jsx}",
     schema: "./schema.json",
     generates: "./sanity.types.ts",
   },
-  vite: {
+  vite: (config) => ({
+    ...config,
     resolve: {
+      ...config.resolve,
       alias: {
-        "@": resolve(import.meta.dirname, "src"),
+        ...config.resolve?.alias,
+        "@": resolve(__dirname, "src"),
       },
     },
-  },
+  }),
 });

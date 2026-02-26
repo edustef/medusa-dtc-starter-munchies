@@ -1,5 +1,5 @@
 {
-  "name": "munchies-astro-cf",
+  "name": "solaredge-supply-astro-cf",
   "private": true,
   "scripts": {
     "build": "turbo run build",

@@ -1,5 +1,5 @@
 import type { ProductDTO } from "@medusajs/framework/types";
-import { Heading, Img, Section } from "@react-email/components";
+import { Heading, Section } from "@react-email/components";
 import EmailBody from "../components/email-body";
 import Layout from "../components/layout";
 import ProductsList from "../components/products-list";
@@ -11,23 +11,19 @@ interface WelcomeEmailProps {
 
 function Welcome({ products }: WelcomeEmailProps) {
   return (
-    <Layout preview="Welcome to Munchies!">
+    <Layout preview="Welcome to SolarEdge Supply!">
       <Section align="left" className="my-20 w-full px-5">
-        <Img
-          className="mb-8 w-full max-w-[560px] rounded-lg"
-          src="https://cdn.sanity.io/images/1wtf7iqx/production/0ebbdf446bb2d4e4287c722fb82fe385d13d6dea-2400x1260.png"
-        />
         <Heading className="pb-3" style={title}>
-          Get ready for some sweet! 🍪
+          Welcome to the future of energy!
         </Heading>
         <EmailBody
           paragraphs={[
-            "Welcome to the Munchies family – your new go-to spot for the most delicious, freshly baked cookies!  We’re thrilled to have you here and can’t wait to satisfy your sweet tooth with our mouthwatering treats.",
-            "What’s Baking at Munchies?",
-            ". Freshly Baked Goodness: All our cookies are made fresh, with love, using the finest ingredients.",
-            ". Exclusive Offers: Be the first to know about our seasonal specials and flash cookie sales",
-            ". Cookie Lover Perks: Sign up for rewards, and get cookies on your birthday!",
-            "Let’s make your cookie dreams come true!",
+            "Welcome to SolarEdge Supply - your trusted partner for premium solar panels and equipment! We’re thrilled to have you here and can’t wait to help you harness the power of the sun.",
+            "What’s New at SolarEdge Supply?",
+            ". High-Efficiency Panels: We carry the latest monocrystalline and polycrystalline panels from top manufacturers.",
+            ". Exclusive Offers: Be the first to know about seasonal promotions and bulk order discounts.",
+            ". Expert Support: Our team is ready to help you choose the right system for your needs.",
+            "Let’s power your home with clean energy!",
           ]}
           signature
         />

@@ -25,7 +25,7 @@ export default defineConfig({
         project_id: process.env.SANITY_PROJECT_ID,
         api_version: new Date().toISOString().split("T")[0],
         dataset: "production",
-        studio_url: "https://munchies-tinloof.vercel.app/cms",
+        studio_url: "https://solaredge-supply-tinloof.vercel.app/cms",
         type_map: {
           collection: "collection",
           category: "category",

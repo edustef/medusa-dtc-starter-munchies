@@ -72,6 +72,9 @@ export const faqIndex = defineType({
     },
   },
   preview: {
+    prepare: ({ title }) => ({
+      title: Array.isArray(title) ? title[0]?.value : title,
+    }),
     select: {
       title: "title",
     },

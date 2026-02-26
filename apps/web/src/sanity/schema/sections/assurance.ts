@@ -39,7 +39,7 @@ export default defineField({
   preview: {
     prepare: ({ title }) => ({
       subtitle: "Assurance section",
-      title,
+      title: Array.isArray(title) ? title[0]?.value : title,
     }),
     select: {
       title: "title",

@@ -38,6 +38,9 @@ export const cookieBanner = defineType({
     structureGroup: "Layout",
   },
   preview: {
+    prepare: ({ title }) => ({
+      title: Array.isArray(title) ? title[0]?.value : title,
+    }),
     select: {
       title: "title",
     },

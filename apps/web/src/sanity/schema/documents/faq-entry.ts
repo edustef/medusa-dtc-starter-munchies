@@ -27,8 +27,9 @@ export const faqEntry = defineType({
   },
   preview: {
     prepare({ title }) {
+      const value = Array.isArray(title) ? title[0]?.value : title;
       return {
-        title: title ? `${title} - FAQ` : "FAQ",
+        title: value ? `${value} - FAQ` : "FAQ",
       };
     },
     select: {

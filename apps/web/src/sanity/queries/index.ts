@@ -105,7 +105,7 @@ export const GLOBAL_QUERY = defineQuery(`{
 
 export const ROUTE_QUERY = defineQuery(`
   *[
-    slugs[$language].current == $slug
+    (slugs[$language].current == $slug && !($slug == "/" && _type != "home"))
     || (_type == "home" && $slug == "/")
   ][0] {
     'routeData': {

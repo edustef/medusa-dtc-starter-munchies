@@ -1,9 +1,11 @@
 {
   "main": "dist/_worker.js/index.js",
-  "name": "munchies-cf",
+  "name": "solaredge-supply-cf",
   "compatibility_date": "2026-01-21",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
-  "routes": [{ "pattern": "munchies.tinloof.com", "custom_domain": true }],
+  "routes": [
+    { "pattern": "solaredge-supply.tinloof.com", "custom_domain": true }
+  ],
   "assets": {
     "binding": "ASSETS",
     "directory": "./dist"
@@ -14,7 +16,7 @@
   "services": [
     {
       "binding": "SEARCH",
-      "service": "munchies-search"
+      "service": "solaredge-supply-search"
     }
   ]
 }

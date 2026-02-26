@@ -28,6 +28,9 @@ export default defineField({
           ],
           name: "collectionCard",
           preview: {
+            prepare: ({ title }) => ({
+              title: Array.isArray(title) ? title[0]?.value : title,
+            }),
             select: {
               title: "cta.label",
             },
@@ -45,7 +48,7 @@ export default defineField({
   preview: {
     prepare: ({ title }) => ({
       subtitle: "Collection list section",
-      title,
+      title: Array.isArray(title) ? title[0]?.value : title,
     }),
     select: {
       title: "title",

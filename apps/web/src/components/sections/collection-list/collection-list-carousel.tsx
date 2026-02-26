@@ -29,7 +29,7 @@ export function CollectionList(props: CollectionListProps) {
           mobileSize="lg"
           tag="h2"
         >
-          Shop our cookies
+          Shop our products
         </Heading>
       }
     />

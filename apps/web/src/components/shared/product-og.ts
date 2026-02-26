@@ -24,8 +24,8 @@ export default function ProductOg({
                 type: "div",
                 props: {
                   style: { fontFamily: "Climate Crisis" },
-                  tw: "flex uppercase text-[43px]",
-                  children: "Munchies",
+                  tw: "flex uppercase text-[32px]",
+                  children: "SolarEdge Supply",
                 },
               },
               {

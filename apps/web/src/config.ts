@@ -10,7 +10,7 @@ const isDev = process.env.NODE_ENV === "development";
 const config = {
   baseUrl: isDev
     ? "http://localhost:3000"
-    : "https://munchies.million-tinloof.com",
+    : "https://solaredge-supply.million-tinloof.com",
   defaultCountryCode: "ro",
   defaultLanguage,
   // Supported country codes - paths not matching these will use default
@@ -41,8 +41,9 @@ const config = {
     // Not exposed to the front-end, used solely by the server
     token: SANITY_TOKEN,
   },
-  title: "Munchies",
-  description: "Delicious cookies delivered to your door",
+  title: "SolarEdge Supply",
+  description:
+    "Premium solar panels and equipment for your energy independence",
 };
 
 export default config;

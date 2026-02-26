@@ -1,13 +1,14 @@
 {
   "collections": {},
   "categories": {
-    "pcat_01KJAFSHDKMJATEY2KNJVCXA6J": "Sweatshirts",
-    "pcat_01KJAFSHDKNE9HWD1PGXZXF718": "Shirts",
-    "pcat_01KJAFSHDKWSY31RP5X875AD5A": "Pants",
-    "pcat_01KJAFSHDMA1FEMRG32G29106P": "Merch"
+    "pcat_01KJDJ2SHPC2RJJP4BRFB6T8FZ": "Solar Panels",
+    "pcat_01KJDJ2SHPKQW5QRGKP4Y0F4CG": "Inverters",
+    "pcat_01KJDJ2SHPZ3B0T01YBZPH09TH": "Batteries",
+    "pcat_01KJDJ2SHQ7APE6HJ59NZJ40WX": "Mounting Hardware",
+    "pcat_01KJDJ2SHQKAQY57CVYXXKRKM0": "Cables & Connectors"
   },
   "regions": {
-    "reg_01KJAFSHBBNBV7PWJ7FZN6VN5C": {
+    "reg_01KJDJ2SF5QE787RX5S05TTPZ7": {
       "name": "Romania",
       "currency_code": "ron"
     }

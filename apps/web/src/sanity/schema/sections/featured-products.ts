@@ -24,7 +24,7 @@ export default defineField({
   preview: {
     prepare: ({ title }) => ({
       subtitle: "Featured products section",
-      title,
+      title: Array.isArray(title) ? title[0]?.value : title,
     }),
     select: {
       title: "title",

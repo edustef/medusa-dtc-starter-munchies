@@ -1,6 +1,6 @@
 # @apps/medusa-backend
 
-Medusa v2 e-commerce backend for the Munchies platform.
+Medusa v2 e-commerce backend for the SolarEdge Supply platform.
 
 ## Overview
 

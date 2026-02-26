@@ -7,7 +7,7 @@ export default function ProductsList({ products }: { products: ProductDTO[] }) {
   return (
     <Section className="mt-12">
       <Text className="" style={titleSmall}>
-        Freshly baked
+        Featured Products
       </Text>
       <Section className="mt-2 mb-6">
         <Row>
@@ -39,7 +39,10 @@ export default function ProductsList({ products }: { products: ProductDTO[] }) {
           })}
         </Row>
       </Section>
-      <CtaButton href="https://munchies-tinloof.vercel.app" label="Shop now" />
+      <CtaButton
+        href="https://solaredge-supply-tinloof.vercel.app"
+        label="Shop now"
+      />
     </Section>
   );
 }

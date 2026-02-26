@@ -37,13 +37,13 @@ export function AddonsItem({ regionId, variant = "PDP", ...product }: Props) {
       className="flex w-full gap-xs"
       href={`/products/${product.handle}`}
     >
-      {product.images?.[0].url ? (
+      {product.images?.[0]?.url ? (
         <Image
           alt={product.title}
           className="aspect-square size-25 rounded-lg border-[1.5px] border-accent"
           height={100}
           sizes="100px"
-          src={product.images?.[0].url}
+          src={product.images[0].url}
           width={100}
         />
       ) : null}

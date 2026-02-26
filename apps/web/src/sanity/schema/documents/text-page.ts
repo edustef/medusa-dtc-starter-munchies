@@ -47,6 +47,9 @@ export const textPage = defineType({
   icon: DocumentTextIcon,
   name: "text.page",
   preview: {
+    prepare: ({ title }) => ({
+      title: Array.isArray(title) ? title[0]?.value : title,
+    }),
     select: {
       title: "title",
     },

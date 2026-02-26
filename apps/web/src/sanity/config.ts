@@ -13,7 +13,7 @@ const config = {
       : import.meta.env.PUBLIC_SANITY_STUDIO_PROJECT_ID || "",
     studioUrl: "/",
   },
-  siteName: "Munchies",
+  siteName: "SolarEdge Supply",
 };
 
 export default config;

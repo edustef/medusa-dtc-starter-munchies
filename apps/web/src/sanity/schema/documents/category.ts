@@ -32,6 +32,9 @@ export default defineType({
     disableCreation: true,
   },
   preview: {
+    prepare: ({ title }) => ({
+      title: Array.isArray(title) ? title[0]?.value : title,
+    }),
     select: {
       title: "internalTitle",
     },

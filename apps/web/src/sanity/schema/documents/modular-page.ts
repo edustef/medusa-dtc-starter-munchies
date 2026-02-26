@@ -35,6 +35,9 @@ export default defineType({
   ],
   name: "modular.page",
   preview: {
+    prepare: ({ title }) => ({
+      title: Array.isArray(title) ? title[0]?.value : title,
+    }),
     select: {
       title: "title",
     },

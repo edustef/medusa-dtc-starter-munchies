@@ -23,8 +23,8 @@ function ShippingConfirmation({ order }: ShippingConfirmationEmailProps) {
         <EmailBody
           paragraphs={[
             `Great news! Your order #${order.display_id} has been shipped and is on its way to you.`,
-            "If you have any questions about your delivery, please don't hesitate to contact us at munchies@medusajs.dev. We're always happy to assist!",
-            "We hope you're as excited as we are for your purchase to arrive. Thank you for shopping with Munchies!",
+            "If you have any questions about your delivery, please don't hesitate to contact us at support@solaredge-supply.com. We're always happy to assist!",
+            "We hope you're as excited as we are for your purchase to arrive. Thank you for shopping with SolarEdge Supply!",
           ]}
           signature
         />

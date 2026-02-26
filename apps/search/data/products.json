@@ -1,108 +1,48 @@
 [
   {
-    "id": "prod_01KJAFSHDVQJB3RAT91FPTGMR6",
-    "title": "Medusa T-Shirt",
-    "handle": "t-shirt",
-    "description": "Reimagine the feeling of a classic T-shirt. With our cotton T-shirts, everyday essentials no longer have to be ordinary.",
-    "thumbnail": "https://medusa-public-images.s3.eu-west-1.amazonaws.com/tee-black-front.png",
+    "id": "prod_01KJDJ2SHY16GDZ02M6PPQFCAR",
+    "title": "SunPower Mono 400W Panel",
+    "handle": "sunpower-mono-400w",
+    "description": "High-efficiency 400W monocrystalline solar panel with 21.4% cell efficiency. PERC technology for superior low-light performance. 25-year performance warranty.",
+    "thumbnail": "https://placehold.co/800x800/FFF6E6/FF5227?text=SunPower+400W",
     "collection_id": "",
     "collection": "",
-    "category_ids": ["pcat_01KJAFSHDKNE9HWD1PGXZXF718"],
-    "categories": ["Shirts"],
+    "category_ids": ["pcat_01KJDJ2SHPC2RJJP4BRFB6T8FZ"],
+    "categories": ["Solar Panels"],
     "type": null,
     "variants": [
       {
-        "id": "variant_01KJAFSHEWGXXXY1SEMVHGWH03",
-        "title": "S / Black",
-        "sku": "SHIRT-S-BLACK",
+        "id": "variant_01KJDJ2SJZ7PDEVXQBPFENBEX7",
+        "title": "Pack of 4",
+        "sku": "SP-MONO-400-4",
         "prices": {
-          "reg_01KJAFSHBBNBV7PWJ7FZN6VN5C": {
-            "calculated_amount": 50,
-            "original_amount": 50,
+          "reg_01KJDJ2SF5QE787RX5S05TTPZ7": {
+            "calculated_amount": 5400,
+            "original_amount": 5400,
             "currency_code": "ron"
           }
         }
       },
       {
-        "id": "variant_01KJAFSHEX4EN29FAF18AVPYY3",
-        "title": "M / White",
-        "sku": "SHIRT-M-WHITE",
+        "id": "variant_01KJDJ2SJZGV6G5A2BJ2PX1EN0",
+        "title": "Pack of 10",
+        "sku": "SP-MONO-400-10",
         "prices": {
-          "reg_01KJAFSHBBNBV7PWJ7FZN6VN5C": {
-            "calculated_amount": 50,
-            "original_amount": 50,
+          "reg_01KJDJ2SF5QE787RX5S05TTPZ7": {
+            "calculated_amount": 12500,
+            "original_amount": 12500,
             "currency_code": "ron"
           }
         }
       },
       {
-        "id": "variant_01KJAFSHEX6XF4D1J8GYEAYZXD",
-        "title": "S / White",
-        "sku": "SHIRT-S-WHITE",
+        "id": "variant_01KJDJ2SJZRN6NB7WM564FMNZC",
+        "title": "Single Panel",
+        "sku": "SP-MONO-400-1",
         "prices": {
-          "reg_01KJAFSHBBNBV7PWJ7FZN6VN5C": {
-            "calculated_amount": 50,
-            "original_amount": 50,
-            "currency_code": "ron"
-          }
-        }
-      },
-      {
-        "id": "variant_01KJAFSHEX78CJSGJTQ4WG867B",
-        "title": "L / Black",
-        "sku": "SHIRT-L-BLACK",
-        "prices": {
-          "reg_01KJAFSHBBNBV7PWJ7FZN6VN5C": {
-            "calculated_amount": 50,
-            "original_amount": 50,
-            "currency_code": "ron"
-          }
-        }
-      },
-      {
-        "id": "variant_01KJAFSHEX93VGK7N9P7A7EMJH",
-        "title": "XL / White",
-        "sku": "SHIRT-XL-WHITE",
-        "prices": {
-          "reg_01KJAFSHBBNBV7PWJ7FZN6VN5C": {
-            "calculated_amount": 50,
-            "original_amount": 50,
-            "currency_code": "ron"
-          }
-        }
-      },
-      {
-        "id": "variant_01KJAFSHEX9KR7808FKEB5JVK3",
-        "title": "L / White",
-        "sku": "SHIRT-L-WHITE",
-        "prices": {
-          "reg_01KJAFSHBBNBV7PWJ7FZN6VN5C": {
-            "calculated_amount": 50,
-            "original_amount": 50,
-            "currency_code": "ron"
-          }
-        }
-      },
-      {
-        "id": "variant_01KJAFSHEXFDMJAZ4Y5JZWCQDT",
-        "title": "XL / Black",
-        "sku": "SHIRT-XL-BLACK",
-        "prices": {
-          "reg_01KJAFSHBBNBV7PWJ7FZN6VN5C": {
-            "calculated_amount": 50,
-            "original_amount": 50,
-            "currency_code": "ron"
-          }
-        }
-      },
-      {
-        "id": "variant_01KJAFSHEXN38SASHBQBVC0P6T",
-        "title": "M / Black",
-        "sku": "SHIRT-M-BLACK",
-        "prices": {
-          "reg_01KJAFSHBBNBV7PWJ7FZN6VN5C": {
-            "calculated_amount": 50,
-            "original_amount": 50,
+          "reg_01KJDJ2SF5QE787RX5S05TTPZ7": {
+            "calculated_amount": 1450,
+            "original_amount": 1450,
             "currency_code": "ron"
           }
         }
@@ -110,61 +50,49 @@
     ]
   },
   {
-    "id": "prod_01KJAFSHFT26KWVDC3Y91G5BM1",
-    "title": "Medusa Sweatshirt",
-    "handle": "sweatshirt",
-    "description": "Reimagine the feeling of a classic sweatshirt. With our cotton sweatshirt, everyday essentials no longer have to be ordinary.",
-    "thumbnail": "https://medusa-public-images.s3.eu-west-1.amazonaws.com/sweatshirt-vintage-front.png",
+    "id": "prod_01KJDJ2SKP6NFJW7W8GWMCDVNP",
+    "title": "EcoLine Poly 330W Panel",
+    "handle": "ecoline-poly-330w",
+    "description": "Reliable 330W polycrystalline solar panel, ideal for residential and commercial installations. Anti-reflective glass coating with salt mist corrosion resistance.",
+    "thumbnail": "https://placehold.co/800x800/FFF6E6/FF5227?text=EcoLine+330W",
     "collection_id": "",
     "collection": "",
-    "category_ids": ["pcat_01KJAFSHDKMJATEY2KNJVCXA6J"],
-    "categories": ["Sweatshirts"],
+    "category_ids": ["pcat_01KJDJ2SHPC2RJJP4BRFB6T8FZ"],
+    "categories": ["Solar Panels"],
     "type": null,
     "variants": [
       {
-        "id": "variant_01KJAFSHGM69DQ817W4GR0BDFC",
-        "title": "S",
-        "sku": "SWEATSHIRT-S",
+        "id": "variant_01KJDJ2SMG7HVS4CBSB8G71MH6",
+        "title": "Pack of 6",
+        "sku": "EL-POLY-330-6",
         "prices": {
-          "reg_01KJAFSHBBNBV7PWJ7FZN6VN5C": {
-            "calculated_amount": 50,
-            "original_amount": 50,
+          "reg_01KJDJ2SF5QE787RX5S05TTPZ7": {
+            "calculated_amount": 5200,
+            "original_amount": 5200,
             "currency_code": "ron"
           }
         }
       },
       {
-        "id": "variant_01KJAFSHGM8S8A4QX9Z8BM5DW1",
-        "title": "M",
-        "sku": "SWEATSHIRT-M",
+        "id": "variant_01KJDJ2SMG80MMREZAM6WD0RX9",
+        "title": "Single Panel",
+        "sku": "EL-POLY-330-1",
         "prices": {
-          "reg_01KJAFSHBBNBV7PWJ7FZN6VN5C": {
-            "calculated_amount": 50,
-            "original_amount": 50,
+          "reg_01KJDJ2SF5QE787RX5S05TTPZ7": {
+            "calculated_amount": 950,
+            "original_amount": 950,
             "currency_code": "ron"
           }
         }
       },
       {
-        "id": "variant_01KJAFSHGN9Q2KHS841B94G01M",
-        "title": "L",
-        "sku": "SWEATSHIRT-L",
+        "id": "variant_01KJDJ2SMGFXR2KZ2G8B9VSD52",
+        "title": "Pack of 12",
+        "sku": "EL-POLY-330-12",
         "prices": {
-          "reg_01KJAFSHBBNBV7PWJ7FZN6VN5C": {
-            "calculated_amount": 50,
-            "original_amount": 50,
-            "currency_code": "ron"
-          }
-        }
-      },
-      {
-        "id": "variant_01KJAFSHGNTJ0SJB4TQNA6CKJX",
-        "title": "XL",
-        "sku": "SWEATSHIRT-XL",
-        "prices": {
-          "reg_01KJAFSHBBNBV7PWJ7FZN6VN5C": {
-            "calculated_amount": 50,
-            "original_amount": 50,
+          "reg_01KJDJ2SF5QE787RX5S05TTPZ7": {
+            "calculated_amount": 9800,
+            "original_amount": 9800,
             "currency_code": "ron"
           }
         }
@@ -172,61 +100,37 @@
     ]
   },
   {
-    "id": "prod_01KJAFSHH9ZPZ2GQHNR8JWCGAC",
-    "title": "Medusa Sweatpants",
-    "handle": "sweatpants",
-    "description": "Reimagine the feeling of classic sweatpants. With our cotton sweatpants, everyday essentials no longer have to be ordinary.",
-    "thumbnail": "https://medusa-public-images.s3.eu-west-1.amazonaws.com/sweatpants-gray-front.png",
+    "id": "prod_01KJDJ2SN2P7YVNBTY7PWP6WYB",
+    "title": "NovaSun Bifacial 450W Panel",
+    "handle": "novasun-bifacial-450w",
+    "description": "Premium 450W bifacial solar panel that captures light from both sides. Up to 30% additional energy yield from rear side. N-type TOPCon cell technology.",
+    "thumbnail": "https://placehold.co/800x800/FFF6E6/FF5227?text=NovaSun+450W",
     "collection_id": "",
     "collection": "",
-    "category_ids": ["pcat_01KJAFSHDKWSY31RP5X875AD5A"],
-    "categories": ["Pants"],
+    "category_ids": ["pcat_01KJDJ2SHPC2RJJP4BRFB6T8FZ"],
+    "categories": ["Solar Panels"],
     "type": null,
     "variants": [
       {
-        "id": "variant_01KJAFSHHQ6CN2X2K22167Q0AS",
-        "title": "M",
-        "sku": "SWEATPANTS-M",
+        "id": "variant_01KJDJ2SNJ4QR9TY0H5QNQKMEX",
+        "title": "Single Panel",
+        "sku": "NS-BIFAC-450-1",
         "prices": {
-          "reg_01KJAFSHBBNBV7PWJ7FZN6VN5C": {
-            "calculated_amount": 50,
-            "original_amount": 50,
+          "reg_01KJDJ2SF5QE787RX5S05TTPZ7": {
+            "calculated_amount": 2100,
+            "original_amount": 2100,
             "currency_code": "ron"
           }
         }
       },
       {
-        "id": "variant_01KJAFSHHQE47YS2V18A15QG04",
-        "title": "S",
-        "sku": "SWEATPANTS-S",
+        "id": "variant_01KJDJ2SNJMKP7Y0RY59AB4NV3",
+        "title": "Pack of 4",
+        "sku": "NS-BIFAC-450-4",
         "prices": {
-          "reg_01KJAFSHBBNBV7PWJ7FZN6VN5C": {
-            "calculated_amount": 50,
-            "original_amount": 50,
-            "currency_code": "ron"
-          }
-        }
-      },
-      {
-        "id": "variant_01KJAFSHHQERBPME7F34X7EVZB",
-        "title": "XL",
-        "sku": "SWEATPANTS-XL",
-        "prices": {
-          "reg_01KJAFSHBBNBV7PWJ7FZN6VN5C": {
-            "calculated_amount": 50,
-            "original_amount": 50,
-            "currency_code": "ron"
-          }
-        }
-      },
-      {
-        "id": "variant_01KJAFSHHQQ700RF45GWVF226G",
-        "title": "L",
-        "sku": "SWEATPANTS-L",
-        "prices": {
-          "reg_01KJAFSHBBNBV7PWJ7FZN6VN5C": {
-            "calculated_amount": 50,
-            "original_amount": 50,
+          "reg_01KJDJ2SF5QE787RX5S05TTPZ7": {
+            "calculated_amount": 7800,
+            "original_amount": 7800,
             "currency_code": "ron"
           }
         }
@@ -234,61 +138,325 @@
     ]
   },
   {
-    "id": "prod_01KJAFSHJC30P2KH51M7GVYM93",
-    "title": "Medusa Shorts",
-    "handle": "shorts",
-    "description": "Reimagine the feeling of classic shorts. With our cotton shorts, everyday essentials no longer have to be ordinary.",
-    "thumbnail": "https://medusa-public-images.s3.eu-west-1.amazonaws.com/shorts-vintage-front.png",
+    "id": "prod_01KJDJ2SP711QW6094V5WP249M",
+    "title": "FlexiSol 100W Flexible Panel",
+    "handle": "flexisol-100w-flexible",
+    "description": "Lightweight 100W flexible solar panel for RVs, boats, and curved surfaces. Ultra-thin design at only 3mm. IP67 water-resistant junction box.",
+    "thumbnail": "https://placehold.co/800x800/FFF6E6/FF5227?text=FlexiSol+100W",
     "collection_id": "",
     "collection": "",
-    "category_ids": ["pcat_01KJAFSHDMA1FEMRG32G29106P"],
-    "categories": ["Merch"],
+    "category_ids": ["pcat_01KJDJ2SHPC2RJJP4BRFB6T8FZ"],
+    "categories": ["Solar Panels"],
     "type": null,
     "variants": [
       {
-        "id": "variant_01KJAFSHJNCM57JH28PV3020R5",
-        "title": "M",
-        "sku": "SHORTS-M",
+        "id": "variant_01KJDJ2SPG2ZVKSMT56933MEB6",
+        "title": "Single Panel",
+        "sku": "FS-FLEX-100-1",
         "prices": {
-          "reg_01KJAFSHBBNBV7PWJ7FZN6VN5C": {
-            "calculated_amount": 50,
-            "original_amount": 50,
+          "reg_01KJDJ2SF5QE787RX5S05TTPZ7": {
+            "calculated_amount": 650,
+            "original_amount": 650,
             "currency_code": "ron"
           }
         }
       },
       {
-        "id": "variant_01KJAFSHJNCYKWX26DHT8BWHN5",
-        "title": "XL",
-        "sku": "SHORTS-XL",
+        "id": "variant_01KJDJ2SPGXFD6SB7HP1R9ARS9",
+        "title": "Pack of 2",
+        "sku": "FS-FLEX-100-2",
         "prices": {
-          "reg_01KJAFSHBBNBV7PWJ7FZN6VN5C": {
-            "calculated_amount": 50,
-            "original_amount": 50,
+          "reg_01KJDJ2SF5QE787RX5S05TTPZ7": {
+            "calculated_amount": 1200,
+            "original_amount": 1200,
+            "currency_code": "ron"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "prod_01KJDJ2SPXXSKCT4KYTY90CXV4",
+    "title": "PowerGrid Hybrid Inverter",
+    "handle": "powergrid-hybrid-inverter",
+    "description": "Hybrid solar inverter with built-in MPPT charge controller. Compatible with lithium and lead-acid batteries. WiFi monitoring included. IP65 rated.",
+    "thumbnail": "https://placehold.co/800x800/FFF6E6/FF5227?text=PowerGrid+Inverter",
+    "collection_id": "",
+    "collection": "",
+    "category_ids": ["pcat_01KJDJ2SHPKQW5QRGKP4Y0F4CG"],
+    "categories": ["Inverters"],
+    "type": null,
+    "variants": [
+      {
+        "id": "variant_01KJDJ2SQE1KJ63BMY0SMC8QCW",
+        "title": "8kW",
+        "sku": "PG-HYB-8KW",
+        "prices": {
+          "reg_01KJDJ2SF5QE787RX5S05TTPZ7": {
+            "calculated_amount": 7800,
+            "original_amount": 7800,
             "currency_code": "ron"
           }
         }
       },
       {
-        "id": "variant_01KJAFSHJNXBD3V8JJCWWQXNGK",
-        "title": "L",
-        "sku": "SHORTS-L",
+        "id": "variant_01KJDJ2SQEN3BY37FQ1SJZ6V8K",
+        "title": "3kW",
+        "sku": "PG-HYB-3KW",
         "prices": {
-          "reg_01KJAFSHBBNBV7PWJ7FZN6VN5C": {
-            "calculated_amount": 50,
-            "original_amount": 50,
+          "reg_01KJDJ2SF5QE787RX5S05TTPZ7": {
+            "calculated_amount": 3500,
+            "original_amount": 3500,
             "currency_code": "ron"
           }
         }
       },
       {
-        "id": "variant_01KJAFSHJNZXY4TJBFDBT0H326",
-        "title": "S",
-        "sku": "SHORTS-S",
+        "id": "variant_01KJDJ2SQEYQE75MM2J6BA1SEV",
+        "title": "5kW",
+        "sku": "PG-HYB-5KW",
         "prices": {
-          "reg_01KJAFSHBBNBV7PWJ7FZN6VN5C": {
-            "calculated_amount": 50,
-            "original_amount": 50,
+          "reg_01KJDJ2SF5QE787RX5S05TTPZ7": {
+            "calculated_amount": 5200,
+            "original_amount": 5200,
+            "currency_code": "ron"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "prod_01KJDJ2SR264CPFXXNYE8M8REP",
+    "title": "MicroInvert 400 Microinverter",
+    "handle": "microinvert-400",
+    "description": "400W microinverter for panel-level power conversion. Maximizes energy harvest with per-panel MPPT. 25-year warranty with real-time monitoring.",
+    "thumbnail": "https://placehold.co/800x800/FFF6E6/FF5227?text=MicroInvert+400",
+    "collection_id": "",
+    "collection": "",
+    "category_ids": ["pcat_01KJDJ2SHPKQW5QRGKP4Y0F4CG"],
+    "categories": ["Inverters"],
+    "type": null,
+    "variants": [
+      {
+        "id": "variant_01KJDJ2SRA1T8S9A4VBK74S88W",
+        "title": "Pack of 4",
+        "sku": "MI-400-4",
+        "prices": {
+          "reg_01KJDJ2SF5QE787RX5S05TTPZ7": {
+            "calculated_amount": 3100,
+            "original_amount": 3100,
+            "currency_code": "ron"
+          }
+        }
+      },
+      {
+        "id": "variant_01KJDJ2SRAAMCYX3H670GTHWX9",
+        "title": "Pack of 10",
+        "sku": "MI-400-10",
+        "prices": {
+          "reg_01KJDJ2SF5QE787RX5S05TTPZ7": {
+            "calculated_amount": 7000,
+            "original_amount": 7000,
+            "currency_code": "ron"
+          }
+        }
+      },
+      {
+        "id": "variant_01KJDJ2SRAJVR80N54SW7C97EM",
+        "title": "Single Unit",
+        "sku": "MI-400-1",
+        "prices": {
+          "reg_01KJDJ2SF5QE787RX5S05TTPZ7": {
+            "calculated_amount": 850,
+            "original_amount": 850,
+            "currency_code": "ron"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "prod_01KJDJ2SRR6KBW0YMA397PC4EX",
+    "title": "VoltStore LiFePO4 Battery",
+    "handle": "voltstore-lifepo4-battery",
+    "description": "Lithium iron phosphate home battery storage. 6,000+ cycle life at 90% depth of discharge. Stackable design for easy capacity expansion.",
+    "thumbnail": "https://placehold.co/800x800/FFF6E6/FF5227?text=VoltStore+Battery",
+    "collection_id": "",
+    "collection": "",
+    "category_ids": ["pcat_01KJDJ2SHPZ3B0T01YBZPH09TH"],
+    "categories": ["Batteries"],
+    "type": null,
+    "variants": [
+      {
+        "id": "variant_01KJDJ2SS1EVVFQW4X1V5Z2EPP",
+        "title": "10kWh",
+        "sku": "VS-LIFE-10",
+        "prices": {
+          "reg_01KJDJ2SF5QE787RX5S05TTPZ7": {
+            "calculated_amount": 15500,
+            "original_amount": 15500,
+            "currency_code": "ron"
+          }
+        }
+      },
+      {
+        "id": "variant_01KJDJ2SS1MWDFX0WFZV2GMMK7",
+        "title": "5kWh",
+        "sku": "VS-LIFE-5",
+        "prices": {
+          "reg_01KJDJ2SF5QE787RX5S05TTPZ7": {
+            "calculated_amount": 8500,
+            "original_amount": 8500,
+            "currency_code": "ron"
+          }
+        }
+      },
+      {
+        "id": "variant_01KJDJ2SS1WBF0QS2P40CY1R9S",
+        "title": "15kWh",
+        "sku": "VS-LIFE-15",
+        "prices": {
+          "reg_01KJDJ2SF5QE787RX5S05TTPZ7": {
+            "calculated_amount": 22000,
+            "original_amount": 22000,
+            "currency_code": "ron"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "prod_01KJDJ2SSGFX8Z80M3Y9KXNAEZ",
+    "title": "CompactCell Wall Battery",
+    "handle": "compactcell-wall-battery",
+    "description": "Compact 2.4kWh wall-mounted battery for small solar systems. Integrated BMS with Bluetooth monitoring. Sleek design for indoor or outdoor installation.",
+    "thumbnail": "https://placehold.co/800x800/FFF6E6/FF5227?text=CompactCell+Battery",
+    "collection_id": "",
+    "collection": "",
+    "category_ids": ["pcat_01KJDJ2SHPZ3B0T01YBZPH09TH"],
+    "categories": ["Batteries"],
+    "type": null,
+    "variants": [
+      {
+        "id": "variant_01KJDJ2SSTP8HQ4BEZ82MZ8WD1",
+        "title": "Pack of 2",
+        "sku": "CC-WALL-2",
+        "prices": {
+          "reg_01KJDJ2SF5QE787RX5S05TTPZ7": {
+            "calculated_amount": 7800,
+            "original_amount": 7800,
+            "currency_code": "ron"
+          }
+        }
+      },
+      {
+        "id": "variant_01KJDJ2SSTTHZVYTP6TYB33CJD",
+        "title": "Single Unit",
+        "sku": "CC-WALL-1",
+        "prices": {
+          "reg_01KJDJ2SF5QE787RX5S05TTPZ7": {
+            "calculated_amount": 4200,
+            "original_amount": 4200,
+            "currency_code": "ron"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "prod_01KJDJ2ST8X51CMRKNX2TKMGW0",
+    "title": "RoofMount Pro Universal Kit",
+    "handle": "roofmount-pro-universal",
+    "description": "Universal roof mounting system for solar panels. Adjustable tilt angle 15-45 degrees. Anodized aluminum rails with stainless steel hardware. Wind load rated to 170 km/h.",
+    "thumbnail": "https://placehold.co/800x800/FFF6E6/FF5227?text=RoofMount+Kit",
+    "collection_id": "",
+    "collection": "",
+    "category_ids": ["pcat_01KJDJ2SHQ7APE6HJ59NZJ40WX"],
+    "categories": ["Mounting Hardware"],
+    "type": null,
+    "variants": [
+      {
+        "id": "variant_01KJDJ2STJ6AAZDVGGPY6BDJWD",
+        "title": "4-Panel Kit",
+        "sku": "RM-PRO-4",
+        "prices": {
+          "reg_01KJDJ2SF5QE787RX5S05TTPZ7": {
+            "calculated_amount": 1200,
+            "original_amount": 1200,
+            "currency_code": "ron"
+          }
+        }
+      },
+      {
+        "id": "variant_01KJDJ2STJH1WA6JM9XH0D0FD0",
+        "title": "6-Panel Kit",
+        "sku": "RM-PRO-6",
+        "prices": {
+          "reg_01KJDJ2SF5QE787RX5S05TTPZ7": {
+            "calculated_amount": 1700,
+            "original_amount": 1700,
+            "currency_code": "ron"
+          }
+        }
+      },
+      {
+        "id": "variant_01KJDJ2STJTXPNA36YWAY1KDV8",
+        "title": "10-Panel Kit",
+        "sku": "RM-PRO-10",
+        "prices": {
+          "reg_01KJDJ2SF5QE787RX5S05TTPZ7": {
+            "calculated_amount": 2600,
+            "original_amount": 2600,
+            "currency_code": "ron"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "prod_01KJDJ2SV1HGK5TR2EEBKEKZ23",
+    "title": "SolarLink MC4 Cable Kit",
+    "handle": "solarlink-mc4-cable-kit",
+    "description": "Complete MC4 solar cable connection kit. Includes UV-resistant solar cable, MC4 connectors, and crimping tool. TUV certified.",
+    "thumbnail": "https://placehold.co/800x800/FFF6E6/FF5227?text=MC4+Cable+Kit",
+    "collection_id": "",
+    "collection": "",
+    "category_ids": ["pcat_01KJDJ2SHQKAQY57CVYXXKRKM0"],
+    "categories": ["Cables & Connectors"],
+    "type": null,
+    "variants": [
+      {
+        "id": "variant_01KJDJ2SV88VXGCPF3WDD5YNNX",
+        "title": "10m Kit",
+        "sku": "SL-MC4-10",
+        "prices": {
+          "reg_01KJDJ2SF5QE787RX5S05TTPZ7": {
+            "calculated_amount": 280,
+            "original_amount": 280,
+            "currency_code": "ron"
+          }
+        }
+      },
+      {
+        "id": "variant_01KJDJ2SV94VCYFMPKM1V1ZFJT",
+        "title": "20m Kit",
+        "sku": "SL-MC4-20",
+        "prices": {
+          "reg_01KJDJ2SF5QE787RX5S05TTPZ7": {
+            "calculated_amount": 480,
+            "original_amount": 480,
+            "currency_code": "ron"
+          }
+        }
+      },
+      {
+        "id": "variant_01KJDJ2SV9ZBG2DRE6EQW1QT13",
+        "title": "50m Kit",
+        "sku": "SL-MC4-50",
+        "prices": {
+          "reg_01KJDJ2SF5QE787RX5S05TTPZ7": {
+            "calculated_amount": 1050,
+            "original_amount": 1050,
             "currency_code": "ron"
           }
         }

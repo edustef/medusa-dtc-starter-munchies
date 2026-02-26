@@ -13,7 +13,7 @@ export default defineField({
   preview: {
     prepare: ({ text }) => ({
       subtitle: "Centered text section",
-      title: text,
+      title: Array.isArray(text) ? text[0]?.value : text,
     }),
     select: {
       text: "text",

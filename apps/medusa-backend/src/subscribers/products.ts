@@ -13,15 +13,18 @@ export default async function productRevalidationHandler({
     });
 
     if (product) {
-      await fetch("https://munchies.million-tinloof.com/api/revalidate", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          tags: [`products:${product.handle}`, `products:${event.data.id}`],
-        }),
-      });
+      await fetch(
+        "https://solaredge-supply.million-tinloof.com/api/revalidate",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            tags: [`products:${product.handle}`, `products:${event.data.id}`],
+          }),
+        }
+      );
     }
   } catch (error) {
     console.error("Error revalidating product: ", error);

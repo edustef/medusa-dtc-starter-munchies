@@ -80,7 +80,7 @@ export default defineField({
     prepare: ({ image, title }) => ({
       media: image,
       subtitle: "Hero section",
-      title,
+      title: Array.isArray(title) ? title[0]?.value : title,
     }),
     select: {
       image: "image",
