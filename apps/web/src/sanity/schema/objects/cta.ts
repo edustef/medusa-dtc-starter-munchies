@@ -7,14 +7,15 @@ export const cta = defineType({
     {
       name: "label",
       title: "Button label",
-      type: "string",
+      type: "internationalizedArrayString",
     },
     {
       name: "link",
       type: "link",
       validation: (Rule) =>
         Rule.custom((value, { parent }) => {
-          if ((parent as any)?.label) {
+          const label = (parent as any)?.label;
+          if (Array.isArray(label) && label.length > 0) {
             return value ? true : "Required";
           }
           return true;
