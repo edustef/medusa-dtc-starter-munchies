@@ -20,14 +20,14 @@ export default defineField({
     {
       name: "title",
       title: "Title",
-      type: "string",
+      type: "internationalizedArrayString",
       validation: (Rule) => Rule.required(),
     },
     {
       hidden: ({ parent }) => parent?.mediaType !== "image",
       name: "subtitle",
       title: "Subtitle",
-      type: "string",
+      type: "internationalizedArrayString",
     },
     {
       name: "cta",

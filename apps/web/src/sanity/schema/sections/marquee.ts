@@ -4,9 +4,8 @@ export default defineField({
   fields: [
     {
       name: "text",
-      of: [{ type: "string" }],
       title: "Text",
-      type: "array",
+      type: "internationalizedArrayText",
       validation: (Rule) => Rule.required(),
     },
   ],
@@ -14,7 +13,7 @@ export default defineField({
   preview: {
     prepare: ({ text }) => ({
       subtitle: "Marquee section",
-      title: text.join(", "),
+      title: text,
     }),
     select: {
       text: "text",

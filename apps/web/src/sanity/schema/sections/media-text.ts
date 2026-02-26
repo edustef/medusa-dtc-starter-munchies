@@ -31,13 +31,13 @@ export default defineField({
     {
       name: "title",
       title: "Title",
-      type: "string",
+      type: "internationalizedArrayString",
       validation: (Rule) => Rule.required(),
     },
     {
       name: "description",
       title: "Description",
-      type: "text",
+      type: "internationalizedArrayText",
       validation: (Rule) => Rule.required(),
     },
   ],

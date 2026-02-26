@@ -5,7 +5,7 @@ export default defineField({
     {
       name: "text",
       title: "Text",
-      type: "text",
+      type: "internationalizedArrayText",
       validation: (Rule) => Rule.required(),
     },
   ],
