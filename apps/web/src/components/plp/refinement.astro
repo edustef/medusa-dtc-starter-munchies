@@ -53,8 +53,7 @@ const categoryOptions = facets.categories
     <MobileFilterDropdown
       client:load
       transition:persist
-      countryCode={Astro.locals.countryCode}
-      defaultCountryCode={Astro.locals.defaultCountryCode}
+      language={Astro.locals.language}
       searchParams={searchParams.toString()}
       pathname={pathname}
       collectionOptions={collectionOptions}

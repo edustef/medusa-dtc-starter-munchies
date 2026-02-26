@@ -1,17 +1,16 @@
 import type { ComponentProps } from "react";
 import { getLocalizedHref } from "@/lib/utils/get-localized-href";
-import { useCountryCodeContext } from "@/stores/country";
+import { useLanguage } from "@/stores/country";
 
 export function LocalizedLink({
   href = "",
   ...passThroughProps
 }: ComponentProps<"a">) {
-  const { countryCode, defaultCountryCode } = useCountryCodeContext();
+  const language = useLanguage();
 
   const localizedHref = getLocalizedHref({
     href: href.toString(),
-    countryCode,
-    defaultCountryCode,
+    language,
   });
 
   return <a href={localizedHref} {...passThroughProps} />;

@@ -1,22 +1,11 @@
+import { getLocalizedHref as i18nGetLocalizedHref } from "@/i18n/helpers";
+import type { Language } from "@/i18n/languages";
+
 interface Options {
   href: string;
-  countryCode: string;
-  defaultCountryCode: string;
+  language: Language;
 }
 
-export function getLocalizedHref({
-  href,
-  countryCode,
-  defaultCountryCode,
-}: Options): string {
-  const isDefault = countryCode === defaultCountryCode;
-  const isExternalLink = href.startsWith("https://");
-  const isDeepLink = href.startsWith("#");
-
-  if (isExternalLink || isDeepLink || isDefault) {
-    return href;
-  }
-
-  const prefix = href.startsWith("/") ? "" : "/";
-  return `/${countryCode}${prefix}${href}`;
+export function getLocalizedHref({ href, language }: Options): string {
+  return i18nGetLocalizedHref(language, href);
 }

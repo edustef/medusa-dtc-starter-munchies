@@ -3,6 +3,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Cta } from "@/components/shared/button";
 import { Icon } from "@/generated/Icon";
 import { ACCORDION_BOTTOM, ACCORDION_TOP } from "@/generated/icons";
+import type { Language } from "@/i18n/languages";
 import { getLocalizedHref } from "@/lib/utils/get-localized-href";
 import type { Option } from "../shared/select";
 import { Body } from "../shared/typography/body";
@@ -14,15 +15,10 @@ interface MobileFilterDropdownProps {
   pathname: string;
   collectionOptions: Option[];
   categoryOptions: Option[];
-  countryCode: string;
-  defaultCountryCode: string;
+  language: Language;
 }
 
-function getClearUrl(
-  searchParams: string,
-  countryCode: string,
-  defaultCountryCode: string
-): string {
+function getClearUrl(searchParams: string, language: Language): string {
   const newParams = new URLSearchParams(searchParams);
   newParams.delete("collection");
   newParams.delete("category");
@@ -31,8 +27,7 @@ function getClearUrl(
     ? `?${queryString}`
     : getLocalizedHref({
         href: "/products",
-        countryCode,
-        defaultCountryCode,
+        language,
       });
 }
 
@@ -41,8 +36,7 @@ export function MobileFilterDropdown({
   pathname,
   collectionOptions,
   categoryOptions,
-  countryCode,
-  defaultCountryCode,
+  language,
 }: MobileFilterDropdownProps) {
   const [isOpen, setOpen] = useState(false);
 
@@ -126,10 +120,7 @@ export function MobileFilterDropdown({
         <Cta className="w-full" onClick={() => setOpen(false)} size="md">
           Show Results
         </Cta>
-        <a
-          className="text-center"
-          href={getClearUrl(searchParams, countryCode, defaultCountryCode)}
-        >
+        <a className="text-center" href={getClearUrl(searchParams, language)}>
           <Body className="underline" font="sans" mobileSize="sm">
             Clear all
           </Body>

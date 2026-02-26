@@ -7,8 +7,7 @@ type Props = HTMLAttributes<"a">;
 const { href, ...rest } = Astro.props;
 
 const localizedHref = getLocalizedHref({
-  countryCode: Astro.locals.countryCode,
-  defaultCountryCode: Astro.locals.defaultCountryCode,
+  language: Astro.locals.language,
   href: href?.toString() ?? "",
 });
 

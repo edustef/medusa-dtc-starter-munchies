@@ -87,6 +87,7 @@ const visualEditingEnabled =
   >
     <CountryInit
       client:load
+      language={Astro.locals.language}
       countryCode={Astro.locals.countryCode}
       defaultCountryCode={Astro.locals.defaultCountryCode}
       pathname={Astro.url.pathname}
