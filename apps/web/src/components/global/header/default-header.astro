@@ -5,8 +5,11 @@ import RichText from "@/components/shared/rich-text.astro";
 import { Body } from "@/components/shared/typography/body";
 import { Icon } from "@/generated/Icon";
 import { CART } from "@/generated/icons";
+import { supportedLanguages } from "@/i18n/languages";
+import { getLocalizedPath, parseLocalizedPath } from "@/i18n/helpers";
 import { listCountries } from "@/lib/medusa/regions";
 import { HeaderClient } from "./header-client";
+import { LanguageSwitcher } from "./language-switcher";
 import { AnnouncementBar } from "./parts/announcement-bar";
 import { BottomBorder } from "./parts/bottom-border";
 
@@ -15,6 +18,12 @@ type Props = Header;
 const header = Astro.props;
 
 const countries = await listCountries();
+
+const { canonicalPath } = parseLocalizedPath(Astro.url.pathname);
+const alternateUrls: Record<string, string> = {};
+for (const lang of supportedLanguages) {
+  alternateUrls[lang] = getLocalizedPath(lang, canonicalPath);
+}
 ---
 
 <header
@@ -35,6 +44,11 @@ const countries = await listCountries();
     header={header}
     countries={countries}
   >
+    <LanguageSwitcher
+      client:load
+      slot="languageSwitcher"
+      alternateUrls={alternateUrls}
+    />
     <Cart
       addons={header.cartAddons}
       server:defer

@@ -9,12 +9,14 @@ interface HeaderClientProps {
   header: HeaderType;
   countries: Country[];
   cartNode?: React.ReactNode;
+  languageSwitcher?: React.ReactNode;
 }
 
 export function HeaderClient({
   header,
   countries,
   cartNode,
+  languageSwitcher,
 }: HeaderClientProps) {
   return (
     <div className="mx-auto flex w-full max-w-max-screen items-center justify-between gap-2xl px-m py-xs lg:px-xl">
@@ -35,6 +37,7 @@ export function HeaderClient({
         <Navigation data={header} />
       </div>
       <div className="flex items-center gap-s">
+        {languageSwitcher}
         <span className="hidden lg:block" id="country-selector">
           <CountrySelectorDialog countries={countries} />
         </span>
