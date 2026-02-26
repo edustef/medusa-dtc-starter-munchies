@@ -8,27 +8,44 @@ import {
 } from "@/components/shared/side-dialog";
 import { Body } from "@/components/shared/typography/body";
 import { Heading } from "@/components/shared/typography/heading";
+import { Label } from "@/components/shared/typography/label";
 import { Icon } from "@/generated/Icon";
 import { CLOSE } from "@/generated/icons";
+import { languages } from "@/i18n/languages";
 import type { Country } from "@/lib/medusa/regions";
-import { useCountryCodeContext } from "@/stores/country";
+import { useCountryCodeContext, useLanguage } from "@/stores/country";
 
 interface DialogRootProps {
   className?: string;
   countries: Country[];
+  alternateUrls: Record<string, string>;
 }
 
 export function CountrySelectorDialog({
   className,
   countries,
+  alternateUrls,
 }: DialogRootProps) {
   const [open, setOpen] = useState(false);
 
   const { countryCode } = useCountryCodeContext();
+  const currentLanguage = useLanguage();
 
-  const handleCountrySelect = (newCountryCode: string) => {
-    // Set region cookie and reload to get new pricing
-    document.cookie = `region=${newCountryCode};path=/;max-age=${60 * 60 * 24 * 365};samesite=lax`;
+  const handleCountrySelect = async (newCountryCode: string) => {
+    if ("cookieStore" in window) {
+      await (window as unknown as { cookieStore: CookieStore }).cookieStore.set(
+        {
+          name: "region",
+          value: newCountryCode,
+          path: "/",
+          maxAge: 60 * 60 * 24 * 365,
+          sameSite: "lax",
+        }
+      );
+    } else {
+      // biome-ignore lint/suspicious/noDocumentCookie: Cookie Store API not available
+      document.cookie = `region=${newCountryCode};path=/;max-age=${60 * 60 * 24 * 365};samesite=lax`;
+    }
     setOpen(false);
     window.location.reload();
   };
@@ -47,6 +64,7 @@ export function CountrySelectorDialog({
           font="sans"
           mobileSize="lg"
         >
+          {currentLanguage.toUpperCase()} /{" "}
           {selectedCountry.code?.toUpperCase()} [
           {selectedCountry.currency.symbol}]
         </Body>
@@ -62,7 +80,7 @@ export function CountrySelectorDialog({
                 mobileSize="base"
                 tag="h2"
               >
-                Select your country
+                Preferences
               </Heading>
             </Title>
             <CloseDialog
@@ -71,17 +89,54 @@ export function CountrySelectorDialog({
             >
               <Icon className="size-9" href={CLOSE} />
             </CloseDialog>
-            <div className="flex flex-1 flex-col items-stretch overflow-y-auto">
-              {countries.map((country) => (
-                <button
-                  className="whitespace-nowrap rounded px-s py-xs text-left hover:bg-secondary"
-                  key={country.code}
-                  onClick={() => handleCountrySelect(country.code)}
-                  type="button"
-                >
-                  {country.name} [{country.currency.symbol}]
-                </button>
-              ))}
+            <div className="flex flex-1 flex-col overflow-y-auto">
+              {/* Language */}
+              <Label
+                className="mb-xs px-s text-accent"
+                font="sans"
+                mobileSize="sm"
+              >
+                Language
+              </Label>
+              <div className="mb-m flex flex-col items-stretch">
+                {languages.map((lang) => (
+                  <a
+                    className={cx(
+                      "whitespace-nowrap rounded px-s py-xs text-left hover:bg-secondary",
+                      currentLanguage === lang.id &&
+                        "bg-secondary font-semibold"
+                    )}
+                    href={alternateUrls[lang.id] ?? `/${lang.id}/`}
+                    key={lang.id}
+                  >
+                    {lang.title}
+                  </a>
+                ))}
+              </div>
+              {/* Country */}
+              <Label
+                className="mb-xs px-s text-accent"
+                font="sans"
+                mobileSize="sm"
+              >
+                Country
+              </Label>
+              <div className="flex flex-col items-stretch">
+                {countries.map((country) => (
+                  <button
+                    className={cx(
+                      "whitespace-nowrap rounded px-s py-xs text-left hover:bg-secondary",
+                      country.code === countryCode &&
+                        "bg-secondary font-semibold"
+                    )}
+                    key={country.code}
+                    onClick={() => handleCountrySelect(country.code)}
+                    type="button"
+                  >
+                    {country.name} [{country.currency.symbol}]
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </div>

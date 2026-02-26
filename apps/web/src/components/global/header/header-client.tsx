@@ -8,21 +8,25 @@ import { Navigation } from "./parts/navigation";
 interface HeaderClientProps {
   header: HeaderType;
   countries: Country[];
+  alternateUrls: Record<string, string>;
   cartNode?: React.ReactNode;
-  languageSwitcher?: React.ReactNode;
 }
 
 export function HeaderClient({
   header,
   countries,
+  alternateUrls,
   cartNode,
-  languageSwitcher,
 }: HeaderClientProps) {
   return (
     <div className="mx-auto flex w-full max-w-max-screen items-center justify-between gap-2xl px-m py-xs lg:px-xl">
       <div className="flex items-center gap-m">
         <div className="flex items-center justify-start gap-s">
-          <Hamburger countries={countries} data={header} />
+          <Hamburger
+            alternateUrls={alternateUrls}
+            countries={countries}
+            data={header}
+          />
           <LocalizedLink href="/">
             <img
               alt="Mubchies logo"
@@ -37,9 +41,11 @@ export function HeaderClient({
         <Navigation data={header} />
       </div>
       <div className="flex items-center gap-s">
-        {languageSwitcher}
         <span className="hidden lg:block" id="country-selector">
-          <CountrySelectorDialog countries={countries} />
+          <CountrySelectorDialog
+            alternateUrls={alternateUrls}
+            countries={countries}
+          />
         </span>
         {cartNode}
       </div>

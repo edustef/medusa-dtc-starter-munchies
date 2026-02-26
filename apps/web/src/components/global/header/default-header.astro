@@ -9,7 +9,6 @@ import { supportedLanguages } from "@/i18n/languages";
 import { getLocalizedPath, parseLocalizedPath } from "@/i18n/helpers";
 import { listCountries } from "@/lib/medusa/regions";
 import { HeaderClient } from "./header-client";
-import { LanguageSwitcher } from "./language-switcher";
 import { AnnouncementBar } from "./parts/announcement-bar";
 import { BottomBorder } from "./parts/bottom-border";
 
@@ -43,12 +42,8 @@ for (const lang of supportedLanguages) {
     transition:persist="navigation"
     header={header}
     countries={countries}
+    alternateUrls={alternateUrls}
   >
-    <LanguageSwitcher
-      client:load
-      slot="languageSwitcher"
-      alternateUrls={alternateUrls}
-    />
     <Cart
       addons={header.cartAddons}
       server:defer

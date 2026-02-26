@@ -30,9 +30,11 @@ type DropdownType = Extract<
 export function Hamburger({
   data,
   countries,
+  alternateUrls,
 }: {
   data: Header;
   countries: Country[];
+  alternateUrls: Record<string, string>;
 }) {
   const [open, setOpen] = useState(false);
   const [activeMenuState, setActiveMenu] = useState<string | undefined>(
@@ -92,7 +94,10 @@ export function Hamburger({
             </div>
             {/* Country Selector */}
             <div className="p-m">
-              <CountrySelectorDialog countries={countries} />
+              <CountrySelectorDialog
+                alternateUrls={alternateUrls}
+                countries={countries}
+              />
             </div>
           </div>
           <div

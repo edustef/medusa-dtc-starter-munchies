@@ -43,7 +43,7 @@ function isExcludedPath(pathname: string): boolean {
   return !!match;
 }
 
-const languageMiddleware = defineMiddleware((context, next) => {
+const languageMiddleware = defineMiddleware(async (context, next) => {
   const { pathname } = context.url;
 
   if (isExcludedPath(pathname)) {
