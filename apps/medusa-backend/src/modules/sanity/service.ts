@@ -148,36 +148,38 @@ export default class SanityModuleService {
     }));
   }
 
+  /** Wraps a plain value in the internationalized array format for Romanian */
+  private toI18nArray(value: string | undefined | null) {
+    if (!value) {
+      return undefined;
+    }
+    return [{ _key: "ro", value }];
+  }
+
   private transformProductForUpdate = (product: ProductDTO) => ({
     set: {
       internalTitle: product.title,
       pathname: { _type: "slug", current: `/products/${product.handle}` },
+      "slugs.ro": { _type: "slug", current: product.handle },
     },
   });
 
-  private transformCategoryForUpdate = (category: ProductCategoryDTO) => {
-    return {
-      set: {
-        internalTitle: category.name,
-        pathname: { _type: "slug", current: `/categories/${category.handle}` },
-        // parent_category: category.parent_category_id
-        //   ? {
-        //       _type: "reference",
-        //       _ref: category.parent_category_id,
-        //     }
-        //   : undefined,
-        // children_categories: category.category_children.map((child) => {
-        //   if (!child.id) return;
-        //   return { _type: "reference", _ref: child.id };
-        // }),
+  private transformCategoryForUpdate = (category: ProductCategoryDTO) => ({
+    set: {
+      internalTitle: this.toI18nArray(category.name),
+      pathname: {
+        _type: "slug",
+        current: `/categories/${category.handle}`,
       },
-    };
-  };
+      "slugs.ro": { _type: "slug", current: category.handle },
+    },
+  });
+
   private transformCollectionForUpdate = (
     collection: ProductCollectionDTO
   ) => ({
     set: {
-      internalTitle: collection.title,
+      internalTitle: this.toI18nArray(collection.title),
       pathname: {
         _type: "slug",
         current: `/collections/${collection.handle}`,
@@ -190,30 +192,33 @@ export default class SanityModuleService {
     _id: product.id,
     internalTitle: product.title,
     pathname: { _type: "slug", current: `/products/${product.handle}` },
+    slugs: {
+      ro: { _type: "slug", current: product.handle },
+    },
   });
-  private transformCategoryForCreate = (category: ProductCategoryDTO) => {
-    return {
-      _type: this.typeMap[SyncDocumentTypes.CATEGORY],
-      _id: category.id,
-      internalTitle: category.name,
-      pathname: { _type: "slug", current: `/categories/${category.handle}` },
-      // parent_category: {
-      //   _type: "reference",
-      //   _ref: category.parent_category_id,
-      // },
-      // children_categories: category.category_children.map((child) => ({
-      //   _type: "reference",
-      //   _ref: child.id,
-      //   _key: child.id,
-      // })),
-    };
-  };
+
+  private transformCategoryForCreate = (category: ProductCategoryDTO) => ({
+    _type: this.typeMap[SyncDocumentTypes.CATEGORY],
+    _id: category.id,
+    internalTitle: this.toI18nArray(category.name),
+    pathname: {
+      _type: "slug",
+      current: `/categories/${category.handle}`,
+    },
+    slugs: {
+      ro: { _type: "slug", current: category.handle },
+    },
+  });
+
   private transformCollectionForCreate = (
     collection: ProductCollectionDTO
   ) => ({
     _type: this.typeMap[SyncDocumentTypes.COLLECTION],
     _id: collection.id,
-    internalTitle: collection.title,
-    pathname: { _type: "slug", current: `/collections/${collection.handle}` },
+    internalTitle: this.toI18nArray(collection.title),
+    pathname: {
+      _type: "slug",
+      current: `/collections/${collection.handle}`,
+    },
   });
 }
