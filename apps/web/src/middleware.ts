@@ -1,6 +1,8 @@
 import { defineMiddleware, sequence } from "astro:middleware";
 import type { RequestContext } from "@/lib/context";
 import config from "./config";
+import type { Language } from "./i18n/languages";
+import { defaultLanguage, supportedLanguages } from "./i18n/languages";
 import { getTags, requestContext } from "./lib/context";
 
 const BUILD_VERSION = import.meta.env.BUILD_VERSION;
@@ -28,7 +30,6 @@ const excludedPaths = [
 const cacheablePaths = ["/api/og"];
 
 function isExcludedPath(pathname: string): boolean {
-  // Check if path is explicitly cacheable (overrides exclusion)
   const isCacheable = cacheablePaths.some(
     (path) => pathname === path || pathname.startsWith(`${path}/`)
   );
@@ -42,33 +43,72 @@ function isExcludedPath(pathname: string): boolean {
   return !!match;
 }
 
-const countryCodeMiddleware = defineMiddleware((context, next) => {
+const languageMiddleware = defineMiddleware((context, next) => {
   const { pathname } = context.url;
 
-  // Skip static assets and excluded paths
+  if (isExcludedPath(pathname)) {
+    context.locals.language = defaultLanguage;
+    context.locals.countryCode = config.defaultCountryCode;
+    context.locals.defaultCountryCode = config.defaultCountryCode;
+    return next();
+  }
+
+  const parts = pathname.split("/").filter(Boolean);
+  const firstPart = parts[0]?.toLowerCase();
+
+  // Root "/" -> detect browser language and redirect
+  if (!firstPart) {
+    const acceptLanguage = context.request.headers.get("accept-language") ?? "";
+    const preferredLanguage: Language = acceptLanguage.includes("ro")
+      ? "ro"
+      : "en";
+    return context.redirect(`/${preferredLanguage}/`, 302);
+  }
+
+  // Check if first segment is a valid language
+  const isValidLanguage = supportedLanguages.includes(firstPart as Language);
+
+  if (!isValidLanguage) {
+    // Not a language prefix -> redirect to default language
+    return context.redirect(`/${defaultLanguage}${pathname}`, 302);
+  }
+
+  context.locals.language = firstPart as Language;
+  return next();
+});
+
+const regionMiddleware = defineMiddleware((context, next) => {
+  const { pathname } = context.url;
+
   if (isExcludedPath(pathname)) {
     return next();
   }
 
-  // Extract first path segment
-  const parts = pathname.split("/").filter(Boolean);
-  const firstPart = parts[0]?.toLowerCase();
+  // Read region from cookie
+  const regionCookie = context.cookies.get("region")?.value;
 
-  // Redirect /us/... to /... (default country shouldn't appear in URL)
-  if (firstPart === config.defaultCountryCode) {
-    const restPath = `/${parts.slice(1).join("/")}`;
-    return context.redirect(restPath || "/", 308);
+  if (regionCookie && config.supportedCountryCodes.includes(regionCookie)) {
+    context.locals.countryCode = regionCookie;
+  } else {
+    // Auto-detect from Cloudflare cf-ipcountry header
+    const cfCountry = context.request.headers
+      .get("cf-ipcountry")
+      ?.toLowerCase();
+    const detectedCountry =
+      cfCountry && config.supportedCountryCodes.includes(cfCountry)
+        ? cfCountry
+        : config.defaultCountryCode;
+
+    context.locals.countryCode = detectedCountry;
+    context.cookies.set("region", detectedCountry, {
+      path: "/",
+      maxAge: 60 * 60 * 24 * 365,
+      httpOnly: false,
+      sameSite: "lax",
+    });
   }
 
-  // Check if path has a valid non-default country code
-  const hasCountryCode =
-    firstPart && config.supportedCountryCodes.includes(firstPart);
-
-  // Store country code in locals for components
-  const countryCode = hasCountryCode ? firstPart : config.defaultCountryCode;
-  context.locals.countryCode = countryCode;
   context.locals.defaultCountryCode = config.defaultCountryCode;
-
   return next();
 });
 
@@ -196,6 +236,7 @@ const cachingMiddleware = defineMiddleware(async (context, next) => {
 
 export const onRequest = sequence(
   contextMiddleware,
-  countryCodeMiddleware,
+  languageMiddleware,
+  regionMiddleware,
   cachingMiddleware
 );
