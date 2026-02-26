@@ -1,7 +1,4 @@
 ---
-
-
-
 import { all } from "better-all";
 import CategoryPage from "@/components/category/category-page.astro";
 import SectionRenderer from "@/components/sections/section-renderer.astro";
@@ -12,16 +9,12 @@ import { loadGlobalData, loadPageByPathname } from "@/lib/sanity";
 
 const { path } = Astro.params;
 const { countryCode, defaultCountryCode } = Astro.locals;
-
 const pathSegments = path ? path.split("/") : [];
-
 // Check if we are on a country code route
 const isCountryCode = countryCode !== defaultCountryCode;
-
 // Extract the actual path without country code
 const actualPath = isCountryCode ? pathSegments.slice(1).join("/") : path;
 const pathname = actualPath ? `/${actualPath}` : "/";
-
 const { globalData, page } = await all({
   globalData() {
     return loadGlobalData();
@@ -30,23 +23,18 @@ const { globalData, page } = await all({
     return loadPageByPathname(pathname);
   },
 });
-
 const pageResult = page?.result;
 const globalDataResult = globalData.result;
-
 if (!pageResult) {
   return Astro.redirect("/404", 404);
 }
-
 const templates: Record<string, any> = {
   "text.page": TextPage,
   home: SectionRenderer,
   "modular.page": SectionRenderer,
   category: CategoryPage,
 };
-
 const Template = templates[pageResult._type];
-
 // Extract first hero section for preloading
 const firstHero =
   pageResult._type !== "text.page"
@@ -54,12 +42,9 @@ const firstHero =
         (s: { _type: string }) => s._type === "section.hero"
       )
     : undefined;
-
 const syncTags = [...(page?.syncTags || []), ...(globalData.syncTags || [])];
-
 Astro.response.headers.set("Cache-Tag", syncTags.join(","));
 ---
-
 <Layout
   title={pageResult.title || pageResult.internalTitle}
   description={pageResult.seo?.description}

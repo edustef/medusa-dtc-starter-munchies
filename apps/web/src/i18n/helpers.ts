@@ -4,7 +4,7 @@ import { canonicalizeSegment, localizeSegment } from "./routes";
 
 export function getLocalizedPath(
   language: Language,
-  canonicalPath: string,
+  canonicalPath: string
 ): string {
   if (
     canonicalPath.startsWith("http://") ||

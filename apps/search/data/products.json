@@ -7,12 +7,8 @@
     "thumbnail": "https://medusa-public-images.s3.eu-west-1.amazonaws.com/tee-black-front.png",
     "collection_id": "",
     "collection": "",
-    "category_ids": [
-      "pcat_01KJAFSHDKNE9HWD1PGXZXF718"
-    ],
-    "categories": [
-      "Shirts"
-    ],
+    "category_ids": ["pcat_01KJAFSHDKNE9HWD1PGXZXF718"],
+    "categories": ["Shirts"],
     "type": null,
     "variants": [
       {
@@ -121,12 +117,8 @@
     "thumbnail": "https://medusa-public-images.s3.eu-west-1.amazonaws.com/sweatshirt-vintage-front.png",
     "collection_id": "",
     "collection": "",
-    "category_ids": [
-      "pcat_01KJAFSHDKMJATEY2KNJVCXA6J"
-    ],
-    "categories": [
-      "Sweatshirts"
-    ],
+    "category_ids": ["pcat_01KJAFSHDKMJATEY2KNJVCXA6J"],
+    "categories": ["Sweatshirts"],
     "type": null,
     "variants": [
       {
@@ -187,12 +179,8 @@
     "thumbnail": "https://medusa-public-images.s3.eu-west-1.amazonaws.com/sweatpants-gray-front.png",
     "collection_id": "",
     "collection": "",
-    "category_ids": [
-      "pcat_01KJAFSHDKWSY31RP5X875AD5A"
-    ],
-    "categories": [
-      "Pants"
-    ],
+    "category_ids": ["pcat_01KJAFSHDKWSY31RP5X875AD5A"],
+    "categories": ["Pants"],
     "type": null,
     "variants": [
       {
@@ -253,12 +241,8 @@
     "thumbnail": "https://medusa-public-images.s3.eu-west-1.amazonaws.com/shorts-vintage-front.png",
     "collection_id": "",
     "collection": "",
-    "category_ids": [
-      "pcat_01KJAFSHDMA1FEMRG32G29106P"
-    ],
-    "categories": [
-      "Merch"
-    ],
+    "category_ids": ["pcat_01KJAFSHDMA1FEMRG32G29106P"],
+    "categories": ["Merch"],
     "type": null,
     "variants": [
       {

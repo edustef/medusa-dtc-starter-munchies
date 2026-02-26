@@ -15,10 +15,7 @@ for (const [canonical, translations] of Object.entries(routeSegments)) {
   }
 }
 
-export function localizeSegment(
-  canonical: string,
-  language: Language,
-): string {
+export function localizeSegment(canonical: string, language: Language): string {
   return routeSegments[canonical]?.[language] ?? canonical;
 }
 
