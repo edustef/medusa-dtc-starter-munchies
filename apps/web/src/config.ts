@@ -10,10 +10,10 @@ const config = {
   baseUrl: isDev
     ? "http://localhost:3000"
     : "https://munchies.million-tinloof.com",
-  defaultCountryCode: "us",
+  defaultCountryCode: "ro",
   // Supported country codes - paths not matching these will use default
   supportedCountryCodes: [
-    "us",
+    "ro",
     "dk",
     "fr",
     "de",

@@ -10,6 +10,7 @@ import type {
   TEXT_PAGE_QUERY_RESULT,
 } from "sanity.types";
 import {
+  CATEGORY_QUERY,
   DICTIONARY_QUERY,
   FAQS_PAGE_QUERY,
   GLOBAL_QUERY,
@@ -47,6 +48,20 @@ export function loadGlobalData() {
   return sanityFetch<GLOBAL_QUERY_RESULT>({ query: GLOBAL_QUERY });
 }
 
+interface CategoryResult {
+  _id: string;
+  _type: "category";
+  internalTitle: string | null;
+  pathname: string | null;
+}
+
+export function loadCategory(pathname: string) {
+  return sanityFetch<CategoryResult | null>({
+    query: CATEGORY_QUERY,
+    params: { pathname },
+  });
+}
+
 export async function loadPageByPathname(pathname: string) {
   const { result } = await loadRoute(pathname);
   const documentType = result?.routeData._type;
@@ -58,6 +73,8 @@ export async function loadPageByPathname(pathname: string) {
       return loadModularPage(pathname);
     case "text.page":
       return loadTextPage(pathname);
+    case "category":
+      return loadCategory(pathname);
     default:
       console.warn("Invalid document type:", documentType);
       return null;

@@ -5,8 +5,10 @@ import { config } from "dotenv";
 // Load env from web app
 config({ path: resolve(import.meta.dirname, "../../web/.env") });
 
-const MEDUSA_BACKEND_URL = process.env.PUBLIC_MEDUSA_BACKEND_URL;
-const MEDUSA_PUBLISHABLE_KEY = process.env.PUBLIC_MEDUSA_PUBLISHABLE_KEY;
+const MEDUSA_BACKEND_URL =
+  process.env.PUBLIC_MEDUSA_BACKEND_URL || process.env.MEDUSA_BACKEND_URL;
+const MEDUSA_PUBLISHABLE_KEY =
+  process.env.PUBLIC_MEDUSA_PUBLISHABLE_KEY || process.env.MEDUSA_PUBLISHABLE_KEY;
 
 if (!(MEDUSA_BACKEND_URL && MEDUSA_PUBLISHABLE_KEY)) {
   console.error("Missing MEDUSA_BACKEND_URL or MEDUSA_PUBLISHABLE_KEY");

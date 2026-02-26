@@ -43,6 +43,10 @@ export function buildCloudflareUrl({
   quality = 75,
   format = "avif",
 }: BuildCloudflareUrlOptions): string {
+  if (import.meta.env.DEV) {
+    return src;
+  }
+
   const options = [
     `width=${width}`,
     `height=${height}`,

@@ -1,5 +1,9 @@
 ---
+
+
+
 import { all } from "better-all";
+import CategoryPage from "@/components/category/category-page.astro";
 import SectionRenderer from "@/components/sections/section-renderer.astro";
 import Preloads from "@/components/shared/preloads.astro";
 import TextPage from "@/components/text-page/index.astro";
@@ -38,6 +42,7 @@ const templates: Record<string, any> = {
   "text.page": TextPage,
   home: SectionRenderer,
   "modular.page": SectionRenderer,
+  category: CategoryPage,
 };
 
 const Template = templates[pageResult._type];
@@ -56,7 +61,7 @@ Astro.response.headers.set("Cache-Tag", syncTags.join(","));
 ---
 
 <Layout
-  title={pageResult.title}
+  title={pageResult.title || pageResult.internalTitle}
   description={pageResult.seo?.description}
   globalData={globalDataResult}
   syncTags={syncTags}

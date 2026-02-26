@@ -1,0 +1,40 @@
+---
+
+import ProductsGrid from "@/components/plp/products-grid.astro";
+import { Heading } from "@/components/shared/typography/heading";
+
+interface Props {
+  _id: string;
+  _type: "category";
+  internalTitle: string | null;
+}
+
+const { _id, internalTitle } = Astro.props;
+---
+
+<section
+  class="mx-auto flex max-w-max-screen flex-col gap-10 px-m pt-26 pb-10 lg:px-xl"
+>
+  <Heading desktopSize="7xl" font="serif" mobileSize="2xl" tag="h1">
+    {internalTitle}
+  </Heading>
+  <ProductsGrid categoryId={_id} />
+</section>
+
+<script is:inline>
+  let scrollPosition = 0;
+  let fromPathname = "";
+
+  document.addEventListener("astro:before-preparation", (e) => {
+    fromPathname = e.from.pathname;
+    scrollPosition = window.scrollY;
+  });
+
+  document.addEventListener("astro:after-swap", () => {
+    if (fromPathname === window.location.pathname && scrollPosition > 0) {
+      window.scrollTo(0, scrollPosition);
+    }
+    fromPathname = null;
+    scrollPosition = 0;
+  });
+</script>

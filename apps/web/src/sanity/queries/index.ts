@@ -47,6 +47,15 @@ export const TEXT_PAGE_QUERY = defineQuery(
   `*[_type == "text.page" && pathname.current == $pathname][0]`
 );
 
+export const CATEGORY_QUERY = defineQuery(
+  `*[_type == "category" && pathname.current == $pathname][0]{
+  _id,
+  _type,
+  internalTitle,
+  "pathname": pathname.current,
+}`
+);
+
 export const FAQS_PAGE_QUERY = defineQuery(`*[_type == "faq.index"][0]{
   ...,
   category[]-> {

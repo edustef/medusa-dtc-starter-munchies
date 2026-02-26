@@ -56,12 +56,12 @@ export default defineConfig({
       CF_ZONE_ID: envField.string({
         context: "server",
         access: "public",
-        optional: false,
+        optional: true,
       }),
       CF_TOKEN: envField.string({
         context: "server",
         access: "secret",
-        optional: false,
+        optional: true,
       }),
     },
   },

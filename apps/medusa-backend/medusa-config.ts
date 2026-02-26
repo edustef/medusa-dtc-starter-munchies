@@ -38,17 +38,27 @@ export default defineConfig({
       key: Modules.FILE,
       options: {
         providers: [
-          {
-            resolve: "@medusajs/medusa/file-s3",
-            id: "s3",
-            options: {
-              authentication_method: "s3-iam-role",
-              file_url: process.env.S3_FILE_URL,
-              region: process.env.S3_REGION,
-              bucket: process.env.S3_BUCKET,
-              endpoint: process.env.S3_ENDPOINT,
-            },
-          },
+          ...(process.env.S3_REGION
+            ? [
+                {
+                  resolve: "@medusajs/medusa/file-s3" as const,
+                  id: "s3",
+                  options: {
+                    authentication_method: "s3-iam-role",
+                    file_url: process.env.S3_FILE_URL,
+                    region: process.env.S3_REGION,
+                    bucket: process.env.S3_BUCKET,
+                    endpoint: process.env.S3_ENDPOINT,
+                  },
+                },
+              ]
+            : [
+                {
+                  resolve: "@medusajs/medusa/file-local" as const,
+                  id: "local",
+                  options: {},
+                },
+              ]),
         ],
       },
     },

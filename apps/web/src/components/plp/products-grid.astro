@@ -1,4 +1,7 @@
 ---
+
+
+
 import type { HttpTypes } from "@medusajs/types";
 import { all } from "better-all";
 import { getRegion } from "@/lib/medusa/regions";
@@ -10,12 +13,18 @@ import { Heading } from "../shared/typography/heading";
 import ClearAll from "./clear-all.astro";
 import Refinement from "./refinement.astro";
 
+interface Props {
+  categoryId?: string;
+}
+
+const { categoryId } = Astro.props;
+
 const url = Astro.url.toString();
 
 const searchParams = new URL(url).searchParams;
 
 const collection = searchParams.get("collection") || "";
-const category = searchParams.get("category") || "";
+const category = searchParams.get("category") || categoryId || "";
 
 const {
   region,
