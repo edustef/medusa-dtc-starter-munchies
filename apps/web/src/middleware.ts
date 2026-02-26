@@ -23,6 +23,7 @@ const excludedPaths = [
   "/favicon-inactive.ico",
   "/_astro",
   "/_image",
+  "/_actions",
   "/_server-islands",
   "/cms",
 ];
