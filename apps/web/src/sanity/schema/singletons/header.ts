@@ -55,7 +55,7 @@ export default defineType({
             {
               name: "title",
               title: "Title",
-              type: "string",
+              type: "internationalizedArrayString",
               validation: (Rule) => Rule.required(),
             },
             {
@@ -66,7 +66,7 @@ export default defineType({
                     {
                       name: "title",
                       title: "Title",
-                      type: "string",
+                      type: "internationalizedArrayString",
                       validation: (Rule) => Rule.required(),
                     },
                     {
@@ -107,7 +107,7 @@ export default defineType({
                     {
                       name: "title",
                       title: "Title",
-                      type: "string",
+                      type: "internationalizedArrayString",
                       validation: (Rule) => Rule.required(),
                     },
                     {

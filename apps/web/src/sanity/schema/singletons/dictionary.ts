@@ -16,13 +16,13 @@ export const dictionary = defineType({
       group: "products",
       name: "noResultsText",
       title: "No results text",
-      type: "string",
+      type: "internationalizedArrayString",
     },
     {
       group: "products",
       name: "noResultsDescription",
       title: "No results description",
-      type: "string",
+      type: "internationalizedArrayString",
     },
   ],
   groups: [

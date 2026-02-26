@@ -14,22 +14,22 @@ export const cookieBanner = defineType({
     {
       name: "title",
       title: "Title",
-      type: "string",
+      type: "internationalizedArrayString",
     },
     {
       name: "description",
       title: "Description",
-      type: "text",
+      type: "internationalizedArrayText",
     },
     {
       name: "rejectButton",
       title: "Reject cookies button",
-      type: "string",
+      type: "internationalizedArrayString",
     },
     {
       name: "acceptButton",
       title: "Accept cookies button",
-      type: "string",
+      type: "internationalizedArrayString",
     },
   ],
   name: "cookie.banner",

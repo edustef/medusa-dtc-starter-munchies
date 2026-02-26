@@ -15,14 +15,14 @@ export const faqIndex = defineType({
       group: "content",
       name: "title",
       title: "Title",
-      type: "string",
+      type: "internationalizedArrayString",
       validation: (Rule) => Rule.required(),
     },
     {
       group: "content",
       name: "description",
       title: "Description",
-      type: "string",
+      type: "internationalizedArrayString",
       validation: (Rule) => Rule.required(),
     },
     {
@@ -30,13 +30,13 @@ export const faqIndex = defineType({
         {
           name: "searchPlaceholder",
           title: "Search placeholder",
-          type: "string",
+          type: "internationalizedArrayString",
           validation: (Rule) => Rule.required(),
         },
         {
           name: "searchNoResults",
           title: "Search no results",
-          type: "string",
+          type: "internationalizedArrayString",
           validation: (Rule) => Rule.required(),
         },
       ],

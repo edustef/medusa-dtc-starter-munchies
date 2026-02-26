@@ -16,7 +16,7 @@ export const notFound = defineType({
     {
       name: "text",
       title: "Text",
-      type: "string",
+      type: "internationalizedArrayString",
     },
     {
       name: "cta",

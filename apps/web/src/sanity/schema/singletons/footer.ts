@@ -117,13 +117,13 @@ export default defineType({
       group: "newsletter",
       name: "placeholder",
       title: "Input placeholder",
-      type: "string",
+      type: "internationalizedArrayString",
     },
     {
       group: "newsletter",
       name: "button",
       title: "Newsletter button",
-      type: "string",
+      type: "internationalizedArrayString",
     },
     {
       group: "newsletter",
