@@ -7,7 +7,24 @@ export default defineType({
       hidden: true,
       name: "internalTitle",
       title: "Title",
-      type: "string",
+      type: "internationalizedArrayString",
+    },
+    {
+      name: "slugs",
+      title: "URL Slugs",
+      type: "object",
+      fields: [
+        {
+          name: "ro",
+          title: "Romanian slug",
+          type: "slug",
+        },
+        {
+          name: "en",
+          title: "English slug",
+          type: "slug",
+        },
+      ],
     },
   ],
   name: "category",

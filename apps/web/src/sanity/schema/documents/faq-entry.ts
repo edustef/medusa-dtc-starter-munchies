@@ -7,13 +7,13 @@ export const faqEntry = defineType({
     {
       name: "question",
       title: "Question",
-      type: "string",
+      type: "internationalizedArrayString",
       validation: (Rule) => Rule.required(),
     },
     {
       name: "answer",
       title: "Answer",
-      type: "text",
+      type: "internationalizedArrayText",
       validation: (Rule) => Rule.required(),
     },
   ],

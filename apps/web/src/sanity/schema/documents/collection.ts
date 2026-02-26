@@ -7,7 +7,7 @@ export default defineType({
       hidden: true,
       name: "internalTitle",
       title: "Title",
-      type: "string",
+      type: "internationalizedArrayString",
     },
   ],
   name: "collection",

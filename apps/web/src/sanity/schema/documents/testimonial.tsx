@@ -6,7 +6,7 @@ export default defineType({
     {
       name: "quote",
       title: "Quote",
-      type: "text",
+      type: "internationalizedArrayText",
       validation: (Rule) => Rule.required(),
     },
     {

@@ -8,14 +8,14 @@ export const textPage = defineType({
       group: "content",
       name: "title",
       title: "title",
-      type: "string",
+      type: "internationalizedArrayString",
       validation: (Rule) => Rule.required(),
     },
     {
       group: "content",
       name: "description",
       title: "Description",
-      type: "text",
+      type: "internationalizedArrayText",
       validation: (Rule) => Rule.required(),
     },
     {
@@ -24,6 +24,24 @@ export const textPage = defineType({
       title: "Content",
       type: "ptBody",
       validation: (Rule) => Rule.required(),
+    },
+    {
+      name: "slugs",
+      title: "URL Slugs",
+      type: "object",
+      fields: [
+        {
+          name: "ro",
+          title: "Romanian slug",
+          type: "slug",
+        },
+        {
+          name: "en",
+          title: "English slug",
+          type: "slug",
+        },
+      ],
+      group: "settings",
     },
   ],
   icon: DocumentTextIcon,

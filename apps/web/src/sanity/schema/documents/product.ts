@@ -18,12 +18,15 @@ export default defineType({
       of: [
         {
           fields: [
-            { name: "title", title: "Title", type: "string" },
+            {
+              name: "title",
+              title: "Title",
+              type: "internationalizedArrayString",
+            },
             {
               name: "content",
-              rows: 3,
               title: "Content",
-              type: "text",
+              type: "internationalizedArrayText",
             },
           ],
           name: "spec",
@@ -34,7 +37,7 @@ export default defineType({
     },
     {
       fields: [
-        { name: "title", title: "Title", type: "string" },
+        { name: "title", title: "Title", type: "internationalizedArrayString" },
         {
           name: "products",
           of: [{ to: [{ type: "product" }], type: "reference" }],
@@ -51,6 +54,24 @@ export default defineType({
       group: "content",
       name: "sections",
       type: "sectionsBody",
+    },
+    {
+      name: "slugs",
+      title: "URL Slugs",
+      type: "object",
+      fields: [
+        {
+          name: "ro",
+          title: "Romanian slug",
+          type: "slug",
+        },
+        {
+          name: "en",
+          title: "English slug",
+          type: "slug",
+        },
+      ],
+      group: "settings",
     },
   ],
   name: "product",

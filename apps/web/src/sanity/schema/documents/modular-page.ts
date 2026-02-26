@@ -7,12 +7,30 @@ export default defineType({
       group: "content",
       name: "title",
       title: "Title",
-      type: "string",
+      type: "internationalizedArrayString",
     },
     {
       group: "content",
       name: "sections",
       type: "sectionsBody",
+    },
+    {
+      name: "slugs",
+      title: "URL Slugs",
+      type: "object",
+      fields: [
+        {
+          name: "ro",
+          title: "Romanian slug",
+          type: "slug",
+        },
+        {
+          name: "en",
+          title: "English slug",
+          type: "slug",
+        },
+      ],
+      group: "settings",
     },
   ],
   name: "modular.page",

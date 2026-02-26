@@ -9,7 +9,7 @@ export const faqCategory = defineType({
       group: "content",
       name: "title",
       title: "Title",
-      type: "string",
+      type: "internationalizedArrayString",
       validation: (Rule) => Rule.required(),
     },
     {
