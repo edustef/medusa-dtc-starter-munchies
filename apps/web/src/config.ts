@@ -3,6 +3,7 @@ import {
   PUBLIC_SANITY_STUDIO_PROJECT_ID,
 } from "astro:env/client";
 import { SANITY_TOKEN } from "astro:env/server";
+import { defaultLanguage, supportedLanguages } from "./i18n/languages";
 
 const isDev = process.env.NODE_ENV === "development";
 
@@ -11,6 +12,7 @@ const config = {
     ? "http://localhost:3000"
     : "https://munchies.million-tinloof.com",
   defaultCountryCode: "ro",
+  defaultLanguage,
   // Supported country codes - paths not matching these will use default
   supportedCountryCodes: [
     "ro",
@@ -30,6 +32,7 @@ const config = {
     "nz",
     "br",
   ],
+  supportedLanguages,
   sanity: {
     apiVersion: "2026-01-16",
     dataset: PUBLIC_SANITY_STUDIO_DATASET,
