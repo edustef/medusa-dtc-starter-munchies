@@ -1,9 +1,7 @@
 import { defineQuery } from "groq";
 
+import { i18n, i18nPt } from "./helpers";
 import { SECTIONS_BODY_FRAGMENT } from "./section";
-
-const i18n = (field: string) =>
-  `coalesce(${field}[_key == $language][0].value, ${field}[_key == "ro"][0].value)`;
 
 export const MODULAR_PAGE_QUERY =
   defineQuery(`*[_type == "modular.page" && slugs[$language].current == $slug][0]{
@@ -22,6 +20,10 @@ export const NOT_FOUND_PAGE_QUERY = defineQuery(
   `*[_type == "not.found"][0]{
   ...,
   "text": ${i18n("text")},
+  cta {
+    ...,
+    "label": ${i18n("label")},
+  },
 }`
 );
 
@@ -41,9 +43,63 @@ export const GLOBAL_QUERY = defineQuery(`{
     ...,
     "placeholder": ${i18n("placeholder")},
     "button": ${i18n("button")},
+    "copy": ${i18nPt("copy")},
+    "signup_success": ${i18nPt("signup_success")},
+    "signup_error": ${i18nPt("signup_error")},
+    "footnote": ${i18nPt("footnote")},
+    information[] {
+      ...,
+      "text": ${i18nPt("text")},
+    },
+    linkList[] {
+      ...,
+      links[] {
+        ...,
+        "label": ${i18n("label")},
+      },
+    },
+    bottomLinks[] {
+      ...,
+      "label": ${i18n("label")},
+    },
+    socialLinks[] {
+      ...,
+      "label": ${i18n("label")},
+    },
   },
   "header": *[_id == "header" && _type == "header"][0]{
     ...,
+    "announcementText": ${i18nPt("announcementText")},
+    navigation[] {
+      ...,
+      _type == "navLink" => {
+        ...,
+        cta {
+          ...,
+          "label": ${i18n("label")},
+        },
+      },
+      _type == "dropdown" => {
+        ...,
+        "title": ${i18n("title")},
+        columns[] {
+          ...,
+          "title": ${i18n("title")},
+          links[] {
+            ...,
+            "label": ${i18n("label")},
+          },
+        },
+        cards[] {
+          ...,
+          "title": ${i18n("title")},
+          cta {
+            ...,
+            "label": ${i18n("label")},
+          },
+        },
+      },
+    },
   },
 }`);
 
@@ -74,6 +130,7 @@ export const TEXT_PAGE_QUERY = defineQuery(
   ...,
   "title": ${i18n("title")},
   "description": ${i18n("description")},
+  "body": ${i18nPt("body")},
 }`
 );
 

@@ -40,7 +40,7 @@ export const Navigation = function Navigation({ data }: { data: Header }) {
     >
       <NavigationMenu.List className="group flex items-center justify-start">
         {data.navigation?.map((item) => {
-          if (item._type === "link") {
+          if (item._type === "navLink") {
             if (!item.cta?.link) {
               return null;
             }

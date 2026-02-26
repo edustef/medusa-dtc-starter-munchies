@@ -22,7 +22,7 @@ export const textPage = defineType({
       group: "content",
       name: "body",
       title: "Content",
-      type: "ptBody",
+      type: "i18nPtBody",
       validation: (Rule) => Rule.required(),
     },
     {

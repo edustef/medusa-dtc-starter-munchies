@@ -28,7 +28,7 @@ export default defineType({
       group: "announcement",
       name: "announcementText",
       title: "Announcement bar text",
-      type: "lightPtBody",
+      type: "i18nLightPtBody",
     },
     {
       group: "navigation",
@@ -42,7 +42,7 @@ export default defineType({
               type: "cta",
             },
           ],
-          name: "link",
+          name: "navLink",
           preview: {
             select: {
               title: "cta.label",

@@ -9,7 +9,12 @@ import { textPage } from "./documents/text-page";
 import { cta } from "./objects/cta";
 import { link } from "./objects/link";
 import { ogImage } from "./objects/og-image";
-import { lightPtBody, ptBody } from "./objects/pt-body";
+import {
+  i18nLightPtBody,
+  i18nPtBody,
+  lightPtBody,
+  ptBody,
+} from "./objects/pt-body";
 import { sectionsBody } from "./objects/sections-body";
 import { seo } from "./objects/seo";
 import spot from "./objects/spot";
@@ -36,6 +41,8 @@ export const schemaTypes = [
   home,
   ptBody,
   lightPtBody,
+  i18nPtBody,
+  i18nLightPtBody,
   footer,
   notFound,
   header,

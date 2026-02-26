@@ -39,13 +39,14 @@ export default defineType({
           fields: [
             {
               name: "text",
-              type: "ptBody",
+              type: "i18nPtBody",
             },
           ],
           preview: {
             prepare({ title }) {
+              const text = title?.ro || title?.en;
               return {
-                title: richTextToPlainText(title) || "line",
+                title: richTextToPlainText(text) || "line",
               };
             },
             select: {
@@ -99,19 +100,19 @@ export default defineType({
       group: "newsletter",
       name: "copy",
       title: "Newsletter Copy",
-      type: "ptBody",
+      type: "i18nPtBody",
     },
     {
       group: "newsletter",
       name: "signup_success",
       title: "Signup success message",
-      type: "ptBody",
+      type: "i18nPtBody",
     },
     {
       group: "newsletter",
       name: "signup_error",
       title: "Signup error message",
-      type: "ptBody",
+      type: "i18nPtBody",
     },
     {
       group: "newsletter",
@@ -129,7 +130,7 @@ export default defineType({
       group: "newsletter",
       name: "footnote",
       title: "Newsletter footnote",
-      type: "ptBody",
+      type: "i18nPtBody",
     },
     {
       group: "bottomLinks",

@@ -134,7 +134,7 @@ function NavMenuItem({
   setActiveMenu: (key: string) => void;
   setOpen: Dispatch<SetStateAction<boolean>>;
 }) {
-  if (item._type === "link") {
+  if (item._type === "navLink") {
     return (
       <>
         {item.cta?.link ? (

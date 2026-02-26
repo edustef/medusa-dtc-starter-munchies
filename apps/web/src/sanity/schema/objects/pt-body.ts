@@ -61,3 +61,23 @@ export const lightPtBody = defineField({
   title: "Rich Text",
   type: "array",
 });
+
+export const i18nPtBody = defineField({
+  fields: [
+    { name: "ro", title: "Romanian", type: "ptBody" },
+    { name: "en", title: "English", type: "ptBody" },
+  ],
+  name: "i18nPtBody",
+  title: "Rich Text (Localized)",
+  type: "object",
+});
+
+export const i18nLightPtBody = defineField({
+  fields: [
+    { name: "ro", title: "Romanian", type: "lightPtBody" },
+    { name: "en", title: "English", type: "lightPtBody" },
+  ],
+  name: "i18nLightPtBody",
+  title: "Rich Text (Localized)",
+  type: "object",
+});

@@ -1,5 +1,4 @@
-const i18n = (field: string) =>
-  `coalesce(${field}[_key == $language][0].value, ${field}[_key == "ro"][0].value)`;
+import { i18n } from "./helpers";
 
 export const TESTIMONIALS_SECTION_QUERY = /* groq */ `{
     ...,
@@ -17,6 +16,10 @@ export const SECTIONS_BODY_FRAGMENT = /* groq */ `{
       ...,
       "title": ${i18n("title")},
       "subtitle": ${i18n("subtitle")},
+      cta {
+        ...,
+        "label": ${i18n("label")},
+      },
     },
     _type == "section.centeredText" => {
       ...,
@@ -30,14 +33,30 @@ export const SECTIONS_BODY_FRAGMENT = /* groq */ `{
     _type == "section.featuredProducts" => {
       ...,
       "title": ${i18n("title")},
+      cta {
+        ...,
+        "label": ${i18n("label")},
+      },
     },
     _type == "section.assurance" => {
       ...,
       "title": ${i18n("title")},
+      cards[] {
+        ...,
+        "title": ${i18n("title")},
+        "description": ${i18n("description")},
+      },
     },
     _type == "section.collectionList" => {
       ...,
       "title": ${i18n("title")},
+      cards[] {
+        ...,
+        cta {
+          ...,
+          "label": ${i18n("label")},
+        },
+      },
     },
     _type == "section.shopTheLook" => {
       ...,
