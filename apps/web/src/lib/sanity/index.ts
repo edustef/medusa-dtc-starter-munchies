@@ -9,8 +9,10 @@ import type {
   ROUTE_QUERY_RESULT,
   TEXT_PAGE_QUERY_RESULT,
 } from "sanity.types";
+import type { Language } from "@/i18n/languages";
 import {
   CATEGORY_QUERY,
+  COOKIE_BANNER_QUERY,
   DICTIONARY_QUERY,
   FAQS_PAGE_QUERY,
   GLOBAL_QUERY,
@@ -23,92 +25,104 @@ import {
 } from "@/sanity/queries";
 import { sanityFetch } from "./sanity-fetch";
 
-// Loader for routes
-export function loadRoute(pathname: string) {
+export function loadRoute(slug: string, language: Language) {
   return sanityFetch<ROUTE_QUERY_RESULT>({
     query: ROUTE_QUERY,
-    params: { pathname },
+    params: { slug, language },
   });
 }
 
-export function loadModularPage(pathname: string) {
+export function loadModularPage(slug: string, language: Language) {
   return sanityFetch<MODULAR_PAGE_QUERY_RESULT>({
     query: MODULAR_PAGE_QUERY,
-    params: {
-      pathname,
-    },
+    params: { slug, language },
   });
 }
 
-export function loadHome() {
-  return sanityFetch<HOME_QUERY_RESULT>({ query: HOME_QUERY });
+export function loadHome(language: Language) {
+  return sanityFetch<HOME_QUERY_RESULT>({
+    query: HOME_QUERY,
+    params: { language },
+  });
 }
 
-export function loadGlobalData() {
-  return sanityFetch<GLOBAL_QUERY_RESULT>({ query: GLOBAL_QUERY });
+export function loadGlobalData(language: Language) {
+  return sanityFetch<GLOBAL_QUERY_RESULT>({
+    query: GLOBAL_QUERY,
+    params: { language },
+  });
 }
 
 interface CategoryResult {
   _id: string;
   _type: "category";
   internalTitle: string | null;
-  pathname: string | null;
+  slugs: Record<string, { current: string } | null> | null;
 }
 
-export function loadCategory(pathname: string) {
+export function loadCategory(slug: string, language: Language) {
   return sanityFetch<CategoryResult | null>({
     query: CATEGORY_QUERY,
-    params: { pathname },
+    params: { slug, language },
   });
 }
 
-export async function loadPageByPathname(pathname: string) {
-  const { result } = await loadRoute(pathname);
+export async function loadPageByPathname(slug: string, language: Language) {
+  const { result } = await loadRoute(slug, language);
   const documentType = result?.routeData._type;
 
   switch (documentType) {
     case "home":
-      return loadHome();
+      return loadHome(language);
     case "modular.page":
-      return loadModularPage(pathname);
+      return loadModularPage(slug, language);
     case "text.page":
-      return loadTextPage(pathname);
+      return loadTextPage(slug, language);
     case "category":
-      return loadCategory(pathname);
+      return loadCategory(slug, language);
     default:
-      console.warn("Invalid document type:", documentType);
       return null;
   }
 }
 
-export function loadNotFound() {
+export function loadNotFound(language: Language) {
   return sanityFetch<NOT_FOUND_PAGE_QUERY_RESULT>({
     query: NOT_FOUND_PAGE_QUERY,
+    params: { language },
   });
 }
 
-export function loadTextPage(pathname: string) {
+export function loadCookieBanner(language: Language) {
+  return sanityFetch({
+    query: COOKIE_BANNER_QUERY,
+    params: { language },
+  });
+}
+
+export function loadTextPage(slug: string, language: Language) {
   return sanityFetch<TEXT_PAGE_QUERY_RESULT>({
     query: TEXT_PAGE_QUERY,
-    params: { pathname },
+    params: { slug, language },
   });
 }
 
-export function loadFaqs() {
+export function loadFaqs(language: Language) {
   return sanityFetch<FAQS_PAGE_QUERY_RESULT>({
     query: FAQS_PAGE_QUERY,
+    params: { language },
   });
 }
 
-export function loadDictionary() {
+export function loadDictionary(language: Language) {
   return sanityFetch<DICTIONARY_QUERY_RESULT>({
     query: DICTIONARY_QUERY,
+    params: { language },
   });
 }
 
-export function loadProductContent(handle: string) {
+export function loadProductContent(handle: string, language: Language) {
   return sanityFetch<PRODUCT_QUERY_RESULT>({
     query: PRODUCT_QUERY,
-    params: { handle },
+    params: { handle, language },
   });
 }
