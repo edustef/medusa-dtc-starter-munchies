@@ -8,6 +8,7 @@ import {
   defineLocations,
 } from "sanity/presentation";
 import { imageHotspotArrayPlugin } from "sanity-plugin-hotspot-array";
+import { internationalizedArray } from "sanity-plugin-internationalized-array";
 import config from "@/sanity/config";
 import { schemaTypes } from "./src/sanity/schema";
 
@@ -35,6 +36,14 @@ export default defineConfig({
   dataset: config.sanity.dataset,
   basePath: config.sanity.studioUrl,
   plugins: [
+    internationalizedArray({
+      languages: [
+        { id: "ro", title: "Romana" },
+        { id: "en", title: "English" },
+      ],
+      defaultLanguages: ["ro"],
+      fieldTypes: ["string", "text"],
+    }),
     pages({
       allowOrigins: isDev ? ["http://localhost:3000"] : undefined,
       previewUrl: {
