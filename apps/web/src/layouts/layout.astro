@@ -12,6 +12,9 @@ import SanityLive from "@/sanity/components/sanity-live.astro";
 import { DraftModeToast } from "@/sanity/components/visual-editing/draft-mode-toast";
 import VisualEditing from "@/sanity/components/visual-editing/index.astro";
 
+import { supportedLanguages } from "@/i18n/languages";
+import { getLocalizedPath, parseLocalizedPath } from "@/i18n/helpers";
+
 import "@/styles/global.css";
 
 interface Props {
@@ -35,11 +38,19 @@ const {
 // Enable visual editing when in draft mode (set by /api/draft-mode/enable)
 const visualEditingEnabled =
   Astro.cookies.get("sanity-draft-mode")?.value === "true";
+
+const { language } = Astro.locals;
+const { canonicalPath } = parseLocalizedPath(Astro.url.pathname);
+const hreflangLinks = supportedLanguages.map((lang) => ({
+  rel: "alternate" as const,
+  hreflang: lang,
+  href: `${config.baseUrl}${getLocalizedPath(lang, canonicalPath)}`,
+}));
 ---
 
 <!doctype html>
 <html
-  lang="en"
+  lang={language}
   transition:animate="none"
   class="overflow-x-clip overscroll-y-none"
 >
@@ -72,7 +83,10 @@ const visualEditingEnabled =
         creator: "@Tinloof"
       }}
       extend={{
-        link: [{rel: "icon", href: "/favicon.ico", type:"image/x-icon"}]
+        link: [
+          {rel: "icon", href: "/favicon.ico", type:"image/x-icon"},
+          ...hreflangLinks,
+        ]
       }}
     />
     <meta name="generator" content={Astro.generator}>
