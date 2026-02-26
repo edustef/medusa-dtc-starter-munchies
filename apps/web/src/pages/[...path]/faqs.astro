@@ -4,12 +4,14 @@ import { FAQs } from "@/components/faqs";
 import Layout from "@/layouts/layout.astro";
 import { loadFaqs, loadGlobalData } from "@/lib/sanity";
 
+const { language } = Astro.locals;
+
 const { globalData, faqs } = await all({
   globalData() {
-    return loadGlobalData();
+    return loadGlobalData(language);
   },
   faqs() {
-    return loadFaqs();
+    return loadFaqs(language);
   },
 });
 

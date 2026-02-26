@@ -11,6 +11,7 @@ import { loadGlobalData } from "@/lib/sanity";
 import { convertToLocale } from "@/lib/utils/medusa/money";
 
 const { id } = Astro.params;
+const { language } = Astro.locals;
 
 if (!id) {
   return Astro.redirect("/404", 404);
@@ -18,7 +19,7 @@ if (!id) {
 
 const { globalData, order } = await all({
   globalData() {
-    return loadGlobalData();
+    return loadGlobalData(language);
   },
   order() {
     return getEnrichedOrder(id);

@@ -10,9 +10,11 @@ import {
 } from "@/lib/medusa/fullfilment";
 import { loadGlobalData } from "@/lib/sanity";
 
+const { language } = Astro.locals;
+
 const { globalData, cart, shippingMethods, paymentMethods } = await all({
   globalData() {
-    return loadGlobalData();
+    return loadGlobalData(language);
   },
   cart() {
     return getEnrichedCart(Astro.cookies);
@@ -32,7 +34,7 @@ const { globalData, cart, shippingMethods, paymentMethods } = await all({
 });
 
 if (!cart || (cart.items?.length || 0) === 0) {
-  return Astro.redirect(`/${Astro.locals.countryCode}`);
+  return Astro.redirect(`/${language}`);
 }
 
 const globalDataResult = globalData.result;

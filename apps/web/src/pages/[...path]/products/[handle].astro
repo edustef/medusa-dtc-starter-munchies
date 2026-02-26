@@ -13,24 +13,23 @@ import { generateOgEndpoint } from "@/lib/utils/generate-og-url";
 
 const { handle } = Astro.params;
 const searchParams = Astro.url.searchParams;
+const { language, countryCode } = Astro.locals;
 
 if (!handle) {
   return Astro.redirect("/404", 404);
 }
 
-const countryCode = Astro.locals.countryCode;
-
 const ogUrl = generateOgEndpoint({ countryCode, handle, type: "products" });
 
 const { globalData, region, product, productContent, addons } = await all({
   globalData() {
-    return loadGlobalData();
+    return loadGlobalData(language);
   },
   region() {
     return getRegion(countryCode);
   },
   productContent() {
-    return loadProductContent(handle);
+    return loadProductContent(handle, language);
   },
   async product() {
     const region = await this.$.region;
@@ -86,7 +85,7 @@ Astro.response.headers.set("Cache-Tag", syncTags.join(","));
   <section
     class="mx-auto flex max-w-max-screen flex-col items-start justify-start gap-s lg:flex-row lg:gap-xs lg:px-xl lg:py-m"
   >
-    <ProductImagesCarousel client :load product={product} />
+    <ProductImagesCarousel client:load product={product} />
     <ProductInformation
       client:load
       product={product}

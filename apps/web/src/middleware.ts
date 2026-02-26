@@ -74,6 +74,24 @@ const languageMiddleware = defineMiddleware((context, next) => {
   }
 
   context.locals.language = firstPart as Language;
+
+  // Canonicalize translated route segments so file-based routing matches
+  // e.g., /ro/produse/handle -> rewrite to /ro/products/handle
+  const restSegments = parts.slice(1);
+  if (restSegments.length > 0) {
+    const { canonicalizeSegment } = await import("./i18n/routes");
+    const canonicalized = restSegments.map((seg, index) => {
+      if (index === 0) {
+        return canonicalizeSegment(seg);
+      }
+      return seg;
+    });
+    const canonicalPath = `/${firstPart}/${canonicalized.join("/")}`;
+    if (canonicalPath !== pathname) {
+      return context.rewrite(canonicalPath);
+    }
+  }
+
   return next();
 });
 
