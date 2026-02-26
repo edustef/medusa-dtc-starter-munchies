@@ -24,25 +24,13 @@ export function CountrySelectorDialog({
 }: DialogRootProps) {
   const [open, setOpen] = useState(false);
 
-  const { countryCode, defaultCountryCode, pathname } = useCountryCodeContext();
+  const { countryCode } = useCountryCodeContext();
 
-  const getNewPath = (newCountryCode: string) => {
-    const pathParts = pathname.split("/");
-
-    const isDefault = newCountryCode === defaultCountryCode;
-    const currentIsDefault = countryCode === defaultCountryCode;
-
-    if (isDefault && !currentIsDefault) {
-      pathParts.splice(1, 1);
-    } else if (!isDefault && currentIsDefault) {
-      pathParts.splice(1, 0, newCountryCode);
-    } else if (!isDefault) {
-      pathParts[1] = newCountryCode;
-    }
-
-    const path = pathParts.join("/");
-
-    return path.startsWith("/") ? path : `/${path}`;
+  const handleCountrySelect = (newCountryCode: string) => {
+    // Set region cookie and reload to get new pricing
+    document.cookie = `region=${newCountryCode};path=/;max-age=${60 * 60 * 24 * 365};samesite=lax`;
+    setOpen(false);
+    window.location.reload();
   };
 
   const selectedCountry =
@@ -85,14 +73,14 @@ export function CountrySelectorDialog({
             </CloseDialog>
             <div className="flex flex-1 flex-col items-stretch overflow-y-auto">
               {countries.map((country) => (
-                <a
-                  className="whitespace-nowrap rounded px-s py-xs hover:bg-secondary"
-                  href={getNewPath(country?.code)}
+                <button
+                  className="whitespace-nowrap rounded px-s py-xs text-left hover:bg-secondary"
                   key={country.code}
-                  onClick={() => setOpen(false)}
+                  onClick={() => handleCountrySelect(country.code)}
+                  type="button"
                 >
                   {country.name} [{country.currency.symbol}]
-                </a>
+                </button>
               ))}
             </div>
           </div>
