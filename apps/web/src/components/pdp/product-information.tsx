@@ -4,6 +4,7 @@ import type { PRODUCT_QUERY_RESULT } from "sanity.types";
 import { ProductVariantsProvider } from "@/components/context/product-context";
 import { Body } from "@/components/shared/typography/body";
 import { Heading } from "@/components/shared/typography/heading";
+import type { Language } from "@/i18n/languages";
 import { AddToCart } from "../cart/add-to-cart";
 import { Addons } from "./addons";
 import { BreadCrumbs } from "./breadcrumbs";
@@ -17,6 +18,7 @@ interface Props {
   regionId: string;
   searchParams: string;
   product: StoreProduct;
+  language: Language;
 }
 
 export function ProductInformation(props: Props) {
@@ -29,6 +31,7 @@ export function ProductInformation(props: Props) {
         <div className="lg:y-s flex w-full flex-col gap-lg px-m pt-s pb-2xl lg:max-w-145">
           <BreadCrumbs
             collection={props.product.collection}
+            language={props.language}
             title={props.product.title}
           />
           <Heading
@@ -54,9 +57,14 @@ export function ProductInformation(props: Props) {
             {props.product.options ? (
               <OptionsSelect options={props.product.options} />
             ) : null}
-            <AddToCart regionId={props.regionId} variant="PDP" />
+            <AddToCart
+              language={props.language}
+              regionId={props.regionId}
+              variant="PDP"
+            />
           </div>
           <Addons
+            language={props.language}
             products={props.addons}
             regionId={props.regionId}
             title={props.content?.addons?.title}

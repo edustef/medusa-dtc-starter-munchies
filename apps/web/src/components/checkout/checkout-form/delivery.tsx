@@ -11,6 +11,8 @@ import {
 import { Cta } from "@/components/shared/button";
 import { Body } from "@/components/shared/typography/body";
 import { Heading } from "@/components/shared/typography/heading";
+import type { Language } from "@/i18n/languages";
+import { t } from "@/i18n/translations";
 import { useResetableActionState } from "@/lib/hooks/use-resetable-action-state";
 import { convertToLocale } from "@/lib/utils/medusa/money";
 
@@ -18,6 +20,7 @@ export default function Delivery({
   active,
   cart,
   currency_code,
+  language,
   methods,
   setCart,
   setStep,
@@ -25,6 +28,7 @@ export default function Delivery({
   active: boolean;
   cart: StoreCart;
   currency_code: string;
+  language: Language;
   methods: StoreCartShippingOption[];
   setCart: Dispatch<SetStateAction<StoreCart>>;
   setStep: Dispatch<
@@ -69,18 +73,18 @@ export default function Delivery({
     <div className="flex w-full flex-col gap-8 border-accent border-t py-8">
       <div className="flex items-center justify-between">
         <Heading desktopSize="xs" font="sans" mobileSize="xs" tag="h6">
-          Delivery
+          {t("checkout.delivery", language)}
         </Heading>
         {isFilled ? (
           <Cta onClick={() => setStep("delivery")} size="sm" variant="outline">
-            Edit
+            {t("checkout.edit", language)}
           </Cta>
         ) : null}
       </div>
       {isFilled ? (
         <div className="flex flex-1 flex-col gap-4">
           <Body className="font-semibold" font="sans">
-            Method
+            {t("checkout.method", language)}
           </Body>
           <Body font="sans">
             {activeShippingMethod.name} ({activeShippingMethodPrice})
@@ -121,7 +125,7 @@ export default function Delivery({
             })}
           </Root>
           <Cta loading={isPending} size="sm" type="submit">
-            Continue to payment
+            {t("checkout.continueToPayment", language)}
           </Cta>
         </form>
       ) : null}

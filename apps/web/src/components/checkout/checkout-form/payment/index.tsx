@@ -7,12 +7,16 @@ import {
   type Dispatch,
   type SetStateAction,
   useContext,
+  useEffect,
+  useRef,
   useState,
   useTransition,
 } from "react";
 import { Cta } from "@/components/shared/button";
 import { Body } from "@/components/shared/typography/body";
 import { Heading } from "@/components/shared/typography/heading";
+import type { Language } from "@/i18n/languages";
+import { t } from "@/i18n/translations";
 import { PaymentButton } from "./button";
 import { isStripe as isStripeFunc } from "./utils";
 import { StripeContext } from "./wrapper";
@@ -20,12 +24,14 @@ import { StripeContext } from "./wrapper";
 export function Payment({
   active,
   cart,
+  language,
   methods,
   setCart,
   setStep,
 }: {
   active: boolean;
   cart: StoreCart;
+  language: Language;
   methods: StorePaymentProvider[];
   setCart: Dispatch<SetStateAction<StoreCart>>;
   setStep: Dispatch<
@@ -47,6 +53,7 @@ export function Payment({
   const stripeReady = useContext(StripeContext);
 
   const [isPending, startTransition] = useTransition();
+  const initiatedRef = useRef(false);
 
   function initiatePayment() {
     startTransition(async () => {
@@ -65,29 +72,41 @@ export function Payment({
     });
   }
 
+  // Auto-initiate Stripe payment session so the card element renders immediately
+  // biome-ignore lint/correctness/useExhaustiveDependencies: initiatePayment is intentionally excluded to avoid re-triggering
+  useEffect(() => {
+    if (active && isStripe && !stripeReady && !initiatedRef.current) {
+      initiatedRef.current = true;
+      initiatePayment();
+    }
+    if (!isStripe) {
+      initiatedRef.current = false;
+    }
+  }, [active, isStripe, stripeReady]);
+
   const activeMethod = methods.find(
     ({ id }) => id === activeSession?.provider_id
   );
   const isFilled = !!activeMethod && !active;
 
-  const method = getMethodInfo(activeMethod?.id);
+  const method = getMethodInfo(activeMethod?.id, language);
 
   return (
     <div className="flex w-full flex-col gap-8 border-accent border-t py-8">
       <div className="flex items-center justify-between">
         <Heading desktopSize="xs" font="sans" mobileSize="xs" tag="h6">
-          Payment
+          {t("checkout.payment", language)}
         </Heading>
         {isFilled ? (
           <Cta onClick={() => setStep("payment")} size="sm" variant="outline">
-            Edit
+            {t("checkout.edit", language)}
           </Cta>
         ) : null}
       </div>
       {isFilled ? (
         <div className="flex flex-1 flex-col gap-4">
           <Body className="font-semibold" font="sans">
-            Method
+            {t("checkout.method", language)}
           </Body>
           <Body font="sans">{method.name}</Body>
         </div>
@@ -111,13 +130,15 @@ export function Payment({
                 </Indicator>
               </div>
               <div className="flex w-full items-center justify-between">
-                <Body font="sans">{getMethodInfo(item.id).name}</Body>
+                <Body font="sans">{getMethodInfo(item.id, language).name}</Body>
               </div>
             </Item>
           ))}
           {isStripe && stripeReady ? (
             <div className="mt-5 flex flex-col gap-2 transition-all duration-150 ease-in-out">
-              <Body font="sans">Enter your card details:</Body>
+              <Body font="sans">
+                {t("checkout.enterCardDetails", language)}
+              </Body>
 
               <CardElement
                 onChange={(e) => {
@@ -130,16 +151,26 @@ export function Payment({
             </div>
           ) : null}
 
-          {isStripe && stripeReady ? (
-            <PaymentButton cart={cart} disabled={!cardComplete} />
-          ) : (
+          {isStripe && stripeReady && (
+            <PaymentButton
+              cart={cart}
+              disabled={!cardComplete}
+              language={language}
+            />
+          )}
+          {isStripe && !stripeReady && (
+            <Cta loading size="sm" type="button">
+              Loading payment...
+            </Cta>
+          )}
+          {!isStripe && (
             <Cta
               loading={isPending}
               onClick={initiatePayment}
               size="sm"
               type="submit"
             >
-              {isStripe ? "Add card details" : "Continue to review"}
+              {t("checkout.continueToReview", language)}
             </Cta>
           )}
         </Root>
@@ -149,6 +180,7 @@ export function Payment({
 }
 
 const stripeCardElementOptions: StripeCardElementOptions = {
+  hidePostalCode: true,
   classes: {
     base: "pt-3 pb-1 block w-full h-11 px-4 text-accent mt-0 bg-background border-2 rounded-md appearance-none focus:outline-none focus:ring-0 focus:shadow-borders-interactive-with-active border-accent transition-all duration-300 ease-in-out",
   },
@@ -163,12 +195,13 @@ const stripeCardElementOptions: StripeCardElementOptions = {
   },
 };
 
-function getMethodInfo(id?: string) {
+function getMethodInfo(id?: string, language?: Language) {
+  const lang = language ?? "ro";
   switch (id) {
     case "pp_system_default":
       return {
         id,
-        name: "Testing method",
+        name: t("checkout.testingMethod", lang),
       };
     case "pp_stripe_stripe":
       return {

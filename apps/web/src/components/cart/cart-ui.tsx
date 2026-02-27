@@ -6,6 +6,7 @@ import {
 import { Body } from "@/components/shared/typography/body";
 import { Icon } from "@/generated/Icon";
 import { CLOSE } from "@/generated/icons";
+import { t } from "@/i18n/translations";
 import { useCart } from "../context/cart";
 import { CartAddonsCarousel } from "./cart-addons-carousel";
 import { CartFooter } from "./cart-footer";
@@ -14,7 +15,7 @@ import { LineItem } from "./line-item";
 import { OpenCart } from "./open-cart";
 
 export function CartUI() {
-  const { cart, cartAddons, region } = useCart();
+  const { cart, cartAddons, language, region } = useCart();
   const isEmptyCart = !cart?.items || cart.items.length === 0;
 
   return (
@@ -34,7 +35,7 @@ export function CartUI() {
             <div className="flex flex-col gap-4 p-4">
               {isEmptyCart ? (
                 <Body font="sans" mobileSize="base">
-                  Your bag is currently empty.
+                  {t("cart.empty", language)}
                 </Body>
               ) : (
                 [...(cart.items ?? [])]
@@ -53,6 +54,7 @@ export function CartUI() {
             {cartAddons && cartAddons?.length > 0 && region && (
               <CartAddonsCarousel
                 isEmptyCart={isEmptyCart}
+                language={language}
                 products={cartAddons}
                 regionId={region.id}
               />

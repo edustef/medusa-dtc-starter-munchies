@@ -1,5 +1,6 @@
 ---
 import type { HttpTypes } from "@medusajs/types";
+import { t } from "@/i18n/translations";
 import { convertToLocale } from "@/lib/utils/medusa";
 import { Body } from "../shared/typography/body";
 import { Heading } from "../shared/typography/heading";
@@ -9,11 +10,12 @@ interface Props {
 }
 
 const { cart } = Astro.props;
+const { language } = Astro.locals;
 
 const summaryItems = [
-  { amount: cart.subtotal, label: "Subtotal" },
-  { amount: cart.tax_total, label: "Taxes" },
-  { amount: cart.shipping_total, label: "Shipping" },
+  { amount: cart.subtotal, label: t("checkout.subtotal", language) },
+  { amount: cart.tax_total, label: t("checkout.taxes", language) },
+  { amount: cart.shipping_total, label: t("checkout.shipping", language) },
 ];
 
 const totalDisplay = convertToLocale({
@@ -38,7 +40,7 @@ const totalDisplay = convertToLocale({
 <div class="h-px w-full bg-accent" />
 <div class="flex items-center justify-between">
   <Heading desktopSize="base" font="sans" mobileSize="base" tag="h3">
-    Total
+    {t("checkout.total", language)}
   </Heading>
   <Heading desktopSize="base" font="sans" mobileSize="base" tag="h3">
     {totalDisplay}

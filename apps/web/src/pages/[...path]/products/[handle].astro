@@ -93,6 +93,7 @@ Astro.response.headers.set("Cache-Tag", syncTags.join(","));
       content={productContentResult}
       regionId={region.id}
       addons={addons ? addons.products : []}
+      language={language}
     />
   </section>
 
@@ -102,5 +103,6 @@ Astro.response.headers.set("Cache-Tag", syncTags.join(","));
     searchParams={searchParams.toString()}
     product={product}
     regionId={region.id}
+    language={language}
   />
 </Layout>

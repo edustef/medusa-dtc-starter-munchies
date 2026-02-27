@@ -1,10 +1,11 @@
 import { ButtonLink, Cta } from "@/components/shared/button";
 import { Body } from "@/components/shared/typography/body";
+import { t } from "@/i18n/translations";
 import { convertToLocale } from "@/lib/utils/medusa/money";
 import { useCart } from "../context/cart";
 
 export function CartFooter() {
-  const { cart, isUpdating } = useCart();
+  const { cart, isUpdating, language } = useCart();
 
   const item_total = cart
     ? convertToLocale({
@@ -26,10 +27,10 @@ export function CartFooter() {
         <div className="flex w-full justify-between gap-4">
           <div>
             <Body className="font-semibold" font="sans" mobileSize="base">
-              Subtotal
+              {t("cart.subtotal", language)}
             </Body>
             <Body font="sans" mobileSize="sm">
-              Taxes and shipping calculated at checkout
+              {t("cart.taxesShipping", language)}
             </Body>
           </div>
           {item_total ? (
@@ -40,7 +41,7 @@ export function CartFooter() {
         </div>
         {cartIsEmpty || isUpdating ? (
           <Cta className="w-full" disabled size="lg" variant="primary">
-            Go to checkout
+            {t("cart.goToCheckout", language)}
           </Cta>
         ) : (
           <ButtonLink
@@ -49,7 +50,7 @@ export function CartFooter() {
             size="lg"
             variant="primary"
           >
-            Go to checkout
+            {t("cart.goToCheckout", language)}
           </ButtonLink>
         )}
       </div>

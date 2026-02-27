@@ -5,12 +5,16 @@ import { useElements, useStripe } from "@stripe/react-stripe-js";
 import { useState, useTransition } from "react";
 import { Cta } from "@/components/shared/button";
 import { Body } from "@/components/shared/typography/body";
+import type { Language } from "@/i18n/languages";
+import { t } from "@/i18n/translations";
 
 export function StripePaymentButton({
   cart,
+  language,
   notReady,
 }: {
   cart: HttpTypes.StoreCart;
+  language?: Language;
   notReady: boolean;
 }) {
   const [errorMessage, setErrorMessage] = useState<null | string>(null);
@@ -109,7 +113,7 @@ export function StripePaymentButton({
         onClick={handlePayment}
         size="sm"
       >
-        Complete order
+        {t("checkout.completeOrder", language ?? "ro")}
       </Cta>
       <Body font="sans">{errorMessage}</Body>
     </>

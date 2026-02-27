@@ -1,5 +1,6 @@
 ---
 import type { HttpTypes } from "@medusajs/types";
+import { t } from "@/i18n/translations";
 import { Heading } from "../shared/typography/heading";
 import CheckoutSummary from "./checkout-summary.astro";
 import LineItem from "./line-item.astro";
@@ -9,13 +10,14 @@ interface Props {
 }
 
 const { cart } = Astro.props;
+const { language } = Astro.locals;
 ---
 
 <div
   class="flex h-fit w-full flex-col gap-4 rounded-lg border border-accent p-4 md:max-w-105"
 >
   <Heading desktopSize="xl" font="serif" mobileSize="lg" tag="h3">
-    Order details
+    {t("checkout.orderDetails", language)}
   </Heading>
   {cart.items?.map((item) => (
     <LineItem item={item} />

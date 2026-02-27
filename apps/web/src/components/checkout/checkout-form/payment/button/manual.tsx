@@ -2,8 +2,16 @@ import { actions } from "astro:actions";
 import { navigate } from "astro:transitions/client";
 import { useTransition } from "react";
 import { Cta } from "@/components/shared/button";
+import type { Language } from "@/i18n/languages";
+import { t } from "@/i18n/translations";
 
-export function ManualPaymentButton({ notReady }: { notReady: boolean }) {
+export function ManualPaymentButton({
+  language,
+  notReady,
+}: {
+  language?: Language;
+  notReady: boolean;
+}) {
   const [isPending, startTransition] = useTransition();
 
   const handleClick = () => {
@@ -26,7 +34,7 @@ export function ManualPaymentButton({ notReady }: { notReady: boolean }) {
       size="sm"
       type="submit"
     >
-      Complete order
+      {t("checkout.completeOrder", language ?? "ro")}
     </Cta>
   );
 }

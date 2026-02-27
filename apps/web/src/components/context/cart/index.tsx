@@ -11,6 +11,7 @@ import {
   useState,
   useTransition,
 } from "react";
+import type { Language } from "@/i18n/languages";
 import type { AddToCartEventPayload } from "./event-bus";
 import { addToCartEventBus } from "./event-bus";
 import {
@@ -28,6 +29,7 @@ const CartContext = createContext<
       cart: Cart | null;
       cartOpen: boolean;
       cartAddons: HttpTypes.StoreProduct[] | null;
+      language: Language;
       region?: HttpTypes.StoreRegion | null;
       handleDeleteItem: (lineItem: string) => void;
       handleUpdateCartQuantity: (lineItem: string, newQuantity: number) => void;
@@ -40,11 +42,13 @@ const CartContext = createContext<
 export function CartProvider({
   cart: initialCart,
   addons: initialAddons,
+  language,
   region,
   children,
   countryCode,
 }: PropsWithChildren<{
   cart: Cart | null;
+  language: Language;
   region?: HttpTypes.StoreRegion | null;
   addons: HttpTypes.StoreProduct[] | null;
   countryCode: string;
@@ -204,6 +208,7 @@ export function CartProvider({
       value={{
         cart: optimisticCart,
         cartAddons: addons,
+        language,
         region,
         cartOpen,
         handleDeleteItem,

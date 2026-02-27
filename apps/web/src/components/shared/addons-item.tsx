@@ -1,6 +1,8 @@
 import type { StoreProduct } from "@medusajs/types";
 import { cx } from "class-variance-authority";
 import { useMemo } from "react";
+import type { Language } from "@/i18n/languages";
+import { t } from "@/i18n/translations";
 import { getProductPrice } from "@/lib/utils/medusa/get-product-price";
 import { AddToCartButton } from "../cart/add-to-cart";
 import { Image } from "./cloudflare-image";
@@ -10,9 +12,15 @@ import { Body } from "./typography/body";
 type Props = {
   regionId: string;
   variant?: "PDP" | "cart";
+  language?: Language;
 } & StoreProduct;
 
-export function AddonsItem({ regionId, variant = "PDP", ...product }: Props) {
+export function AddonsItem({
+  regionId,
+  variant = "PDP",
+  language,
+  ...product
+}: Props) {
   const { cheapestPrice } = getProductPrice({
     product,
   });
@@ -65,7 +73,7 @@ export function AddonsItem({ regionId, variant = "PDP", ...product }: Props) {
           className={cx("self-end", {
             "mr-4": variant === "cart",
           })}
-          label="Add +"
+          label={language ? t("cart.addShort", language) : "Add +"}
           productVariant={variantWithProduct}
           regionId={regionId}
           size={size}

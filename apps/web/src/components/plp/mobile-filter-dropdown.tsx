@@ -4,6 +4,7 @@ import { Cta } from "@/components/shared/button";
 import { Icon } from "@/generated/Icon";
 import { ACCORDION_BOTTOM, ACCORDION_TOP } from "@/generated/icons";
 import type { Language } from "@/i18n/languages";
+import { t } from "@/i18n/translations";
 import { getLocalizedHref } from "@/lib/utils/get-localized-href";
 import type { Option } from "../shared/select";
 import { Body } from "../shared/typography/body";
@@ -66,7 +67,11 @@ export function MobileFilterDropdown({
     }
   };
   return (
-    <DropDown isOpen={isOpen} placeholder="Filter" setOpen={setOpen}>
+    <DropDown
+      isOpen={isOpen}
+      placeholder={t("filter.filter", language)}
+      setOpen={setOpen}
+    >
       <div
         className="relative max-h-90 w-full overflow-y-auto rounded"
         onScroll={handleScroll}
@@ -87,14 +92,14 @@ export function MobileFilterDropdown({
         </div>
         <div className="flex flex-col gap-xs p-xs">
           <Accordion
-            heading="Collections"
+            heading={t("filter.collections", language)}
             name="collection"
             options={collectionOptions}
             pathname={pathname}
             searchParams={searchParams.toString()}
           />
           <Accordion
-            heading="Categories"
+            heading={t("filter.categories", language)}
             name="category"
             options={categoryOptions}
             pathname={pathname}
@@ -118,11 +123,11 @@ export function MobileFilterDropdown({
 
       <div className="sticky bottom-0 my-2 flex w-[calc(100vw-40px)] flex-col justify-center gap-s px-xs">
         <Cta className="w-full" onClick={() => setOpen(false)} size="md">
-          Show Results
+          {t("filter.showResults", language)}
         </Cta>
         <a className="text-center" href={getClearUrl(searchParams, language)}>
           <Body className="underline" font="sans" mobileSize="sm">
-            Clear all
+            {t("filter.clearAll", language)}
           </Body>
         </a>
       </div>

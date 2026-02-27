@@ -2,15 +2,19 @@ import type { StoreProductVariant } from "@medusajs/types";
 import { cx } from "class-variance-authority";
 import type { ButtonProps } from "@/components/shared/button";
 import { Cta } from "@/components/shared/button";
+import type { Language } from "@/i18n/languages";
+import { t } from "@/i18n/translations";
 import { addToCartEventBus } from "../context/cart/event-bus";
 import { useProductVariants } from "../context/product-context";
 
 export function AddToCart({
   regionId,
   variant,
+  language,
 }: {
   regionId: string;
   variant: "PDP" | "sticky";
+  language: Language;
 }) {
   const { activeVariant } = useProductVariants();
   return (
@@ -19,7 +23,7 @@ export function AddToCart({
         "h-15! w-fit": variant === "sticky",
         "w-full": variant === "PDP",
       })}
-      label="Add to cart"
+      label={t("cart.add", language)}
       productVariant={activeVariant}
       regionId={regionId}
       size={variant === "PDP" ? "xl" : "md"}

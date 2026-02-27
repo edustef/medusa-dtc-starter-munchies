@@ -1,4 +1,5 @@
 ---
+import { t } from "@/i18n/translations";
 import { getLocalizedHref } from "@/lib/utils/get-localized-href";
 import ButtonLink from "../shared/button-link.astro";
 import { Body } from "../shared/typography/body";
@@ -23,16 +24,17 @@ function getClearUrl(): string {
 }
 
 const { variant } = Astro.props;
+const language = Astro.locals.language;
 ---
 
 {variant === "button" ? (
   <ButtonLink class="mt-3" href={getClearUrl()} size="sm" variant="outline">
-    Clear filters
+    {t("filter.clearFilters", language)}
   </ButtonLink>
 ) : (
   <a href={getClearUrl()}>
     <Body className="underline" font="sans" mobileSize="sm">
-      Clear all
+      {t("filter.clearAll", language)}
     </Body>
   </a>
 )}

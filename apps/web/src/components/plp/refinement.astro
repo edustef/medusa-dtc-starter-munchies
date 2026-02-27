@@ -1,4 +1,5 @@
 ---
+import { t } from "@/i18n/translations";
 import type { SearchResult } from "@/lib/search/client";
 import ClearAll from "./clear-all.astro";
 import { FilterSelect } from "./filter-select";
@@ -25,6 +26,8 @@ const collectionOptions = facets.collections
 const categoryOptions = facets.categories
   .filter((c) => c.count > 0 || categories.includes(c.id))
   .map((c) => ({ label: c.label, value: c.id }));
+
+const language = Astro.locals.language;
 ---
 
 <div class="flex items-center justify-between">
@@ -34,7 +37,8 @@ const categoryOptions = facets.categories
       name="collection"
       options={collectionOptions}
       pathname={pathname}
-      placeholder="Collections"
+      placeholder={t("filter.collections", language)}
+      noFiltersText={t("filter.noFilters", language)}
       searchParams={searchParams.toString()}
       transition:persist
     />
@@ -43,7 +47,8 @@ const categoryOptions = facets.categories
       name="category"
       options={categoryOptions}
       pathname={pathname}
-      placeholder="Categories"
+      placeholder={t("filter.categories", language)}
+      noFiltersText={t("filter.noFilters", language)}
       searchParams={searchParams.toString()}
       transition:persist
     />
@@ -53,7 +58,7 @@ const categoryOptions = facets.categories
     <MobileFilterDropdown
       client:load
       transition:persist
-      language={Astro.locals.language}
+      language={language}
       searchParams={searchParams.toString()}
       pathname={pathname}
       collectionOptions={collectionOptions}

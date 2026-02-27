@@ -12,6 +12,7 @@ interface Props {
 }
 
 const { addons, countryCode } = Astro.props;
+const { language } = Astro.locals;
 
 const { cart, region, products } = await all({
   cart() {
@@ -37,6 +38,7 @@ const { cart, region, products } = await all({
 <Cart
   client:load
   cart={cart}
+  language={language}
   region={region}
   countryCode={countryCode}
   cartAddons={products}

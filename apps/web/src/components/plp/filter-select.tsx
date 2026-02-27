@@ -51,6 +51,7 @@ export function FilterSelect(
     name: string;
     pathname: string;
     placeholder: string;
+    noFiltersText?: string;
     searchParams: string;
   } & Omit<ComponentProps<typeof Select>, "setOption" | "variant">
 ) {
@@ -106,7 +107,9 @@ export function FilterSelect(
         </div>
         <div className="group flex w-full flex-col gap-2 p-xs">
           {props.options.length === 0 && (
-            <Body className="w-full">No filters to select</Body>
+            <Body className="w-full">
+              {props.noFiltersText ?? "No filters to select"}
+            </Body>
           )}
           {props.options.map((option) => {
             const selected = filter.includes(option.value);

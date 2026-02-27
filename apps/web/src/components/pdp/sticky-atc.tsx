@@ -2,6 +2,7 @@ import type { StoreProduct } from "@medusajs/types";
 import { cx } from "class-variance-authority";
 import { NuqsAdapter } from "nuqs/adapters/react";
 import { useEffect, useState } from "react";
+import type { Language } from "@/i18n/languages";
 import { AddToCart } from "../cart/add-to-cart";
 import { ProductVariantsProvider } from "../context/product-context";
 import { OptionsSelect } from "./options-select";
@@ -10,9 +11,15 @@ interface StickyAtcProps {
   regionId: string;
   searchParams: string;
   product: StoreProduct;
+  language: Language;
 }
 
-export function StickyAtc({ regionId, searchParams, product }: StickyAtcProps) {
+export function StickyAtc({
+  regionId,
+  searchParams,
+  product,
+  language,
+}: StickyAtcProps) {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
@@ -50,7 +57,11 @@ export function StickyAtc({ regionId, searchParams, product }: StickyAtcProps) {
                 <OptionsSelect options={product.options} />
               </div>
             )}
-            <AddToCart regionId={regionId} variant="sticky" />
+            <AddToCart
+              language={language}
+              regionId={regionId}
+              variant="sticky"
+            />
           </div>
         </div>
       </ProductVariantsProvider>
